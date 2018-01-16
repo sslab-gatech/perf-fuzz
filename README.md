@@ -12,6 +12,7 @@ New OS Primitives Specialized for Fuzzing
 * afl/ contains the modified afl source code which leverages the snapshot() system call and the in-memory test case log.
 * To enable snapshot(), make sure `#define MYFORK` in config.h and compile with `AFL_PERF=1 make`.
 * We add a new option `-u` to indicate the afl instance id and the total number of afl instances running in parallel.
+* Currently only 64bit fuzzing targets are supported.
 
 ## Example 
 * We provide an example of using modified AFL to fuzz libjpeg (afl-test/).
