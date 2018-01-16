@@ -1,0 +1,8 @@
+sys_exit_group in snapshot: revert pc & back to sanitizing routine
+do_group_exit in snapshot: kill signal/ctrl+c etc. clean all the structures and do real quit
+sys_exit_group/do_group_exit outside snapshot:
+we choose to clean all the structures and do real quit
+
+* file struct not initialized
+
+

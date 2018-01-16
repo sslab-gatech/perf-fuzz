@@ -1,0 +1,2146 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 1823
+#
+# Samples: 184K of event 'cycles:ppp'
+# Event count (approx.): 2513826404194
+#
+# Overhead  Command          Shared Object            Symbol                                        
+# ........  ...............  .......................  ..............................................
+#
+    11.81%  afl-fork-target  [kernel.vmlinux]         [k] page_counter_cancel
+            |
+            ---page_counter_cancel
+               uncharge_batch
+               uncharge_list
+               mem_cgroup_uncharge_list
+               release_pages
+               free_pages_and_swap_cache
+               tlb_flush_mmu_free
+               tlb_finish_mmu
+               unmap_region
+               do_munmap
+               sys_brk
+               recover_snapshot.part.11
+               sys_snapshot
+               |          
+                --11.81%--entry_SYSCALL_64_fastpath
+                          syscall
+                          __afl_cleanup
+
+     7.20%  afl-fork-target  libc-2.21.so             [.] _dl_addr
+            |          
+             --7.20%--_dl_addr
+                       |          
+                        --7.15%--ptmalloc_init.part.7
+                                  malloc_hook_ini
+                                  __do_main
+                                  __afl_fork_resume
+
+     6.22%  afl-fork-target  [kernel.vmlinux]         [k] page_counter_try_charge
+            |
+            ---page_counter_try_charge
+               |          
+                --6.10%--memcg_kmem_charge_memcg
+                          memcg_kmem_charge
+                          __alloc_pages_nodemask
+                          alloc_pages_current
+                          pte_alloc_one
+                          __pte_alloc
+                          handle_mm_fault
+                          __do_page_fault
+                          do_page_fault
+                          page_fault
+                          _int_malloc
+                          malloc_hook_ini
+                          __do_main
+                          __afl_fork_resume
+
+     4.40%  afl-fork-target  [kernel.vmlinux]         [k] do_wp_page
+            |
+            ---do_wp_page
+               |          
+                --4.38%--handle_mm_fault
+                          __do_page_fault
+                          do_page_fault
+                          page_fault
+
+     4.29%  afl-fuzz         afl-fuzz                 [.] run_target
+            |          
+             --4.29%--run_target
+                       |          
+                        --4.16%--common_fuzz_stuff
+                                  fuzz_one
+                                  |          
+                                   --4.16%--main
+                                             |          
+                                              --3.76%--__libc_start_main
+                                                        |          
+                                                         --3.62%--_start
+
+     3.82%  afl-fuzz         afl-fuzz                 [.] has_new_bits
+            |          
+             --3.82%--has_new_bits
+                       |          
+                        --3.82%--save_if_interesting
+                                  |          
+                                   --3.76%--common_fuzz_stuff
+                                             fuzz_one
+                                             |          
+                                              --3.76%--main
+                                                        |          
+                                                         --3.38%--__libc_start_main
+                                                                   |          
+                                                                    --3.26%--_start
+
+     3.14%  swapper          [kernel.vmlinux]         [k] intel_idle
+            |
+            ---intel_idle
+               cpuidle_enter_state
+               cpuidle_enter
+               call_cpuidle
+               cpu_startup_entry
+               start_secondary
+
+     3.12%  afl-fork-target  [kernel.vmlinux]         [k] copy_user_enhanced_fast_string
+            |
+            ---copy_user_enhanced_fast_string
+               |          
+                --3.06%--recover_memory_snapshot
+                          recover_snapshot.part.11
+                          sys_snapshot
+                          entry_SYSCALL_64_fastpath
+                          syscall
+                          __afl_cleanup
+
+     2.18%  afl-fork-target  [kernel.vmlinux]         [k] flush_tlb_page
+            |
+            ---flush_tlb_page
+               |          
+               |--1.15%--make_snapshot_page
+               |          do_memory_snapshot
+               |          make_snapshot
+               |          sys_snapshot
+               |          entry_SYSCALL_64_fastpath
+               |          syscall
+               |          __afl_fork_resume
+               |          
+                --1.01%--do_wp_page
+                          handle_mm_fault
+                          __do_page_fault
+                          do_page_fault
+                          page_fault
+
+     1.54%  afl-fuzz         libc-2.21.so             [.] __memset_sse2
+            |          
+             --1.54%--__memset_sse2
+                       |          
+                        --1.51%--run_target
+                                  |          
+                                   --1.48%--common_fuzz_stuff
+                                             fuzz_one
+                                             |          
+                                              --1.48%--main
+                                                        |          
+                                                         --1.32%--__libc_start_main
+                                                                   |          
+                                                                    --1.28%--_start
+
+     1.08%  afl-fuzz         [kernel.vmlinux]         [k] page_counter_cancel
+            |
+            ---page_counter_cancel
+               |          
+                --1.08%--uncharge_batch
+                          uncharge_list
+                          mem_cgroup_uncharge_list
+                          release_pages
+                          |          
+                           --1.08%--__pagevec_release
+                                     shmem_undo_range
+                                     shmem_truncate_range
+                                     shmem_evict_inode
+                                     evict
+                                     iput
+                                     |          
+                                      --1.08%--do_unlinkat
+                                                sys_unlink
+                                                entry_SYSCALL_64_fastpath
+                                                __GI___unlink
+                                                |          
+                                                 --1.06%--write_to_testcase
+                                                           |          
+                                                            --1.06%--common_fuzz_stuff
+                                                                      fuzz_one
+                                                                      |          
+                                                                       --1.06%--main
+                                                                                 |          
+                                                                                  --0.95%--__libc_start_main
+                                                                                            |          
+                                                                                             --0.91%--_start
+
+     0.84%  afl-fork-target  [kernel.vmlinux]         [k] native_irq_return_iret
+            |
+            ---native_irq_return_iret
+
+     0.81%  afl-fork-target  [kernel.vmlinux]         [k] recover_memory_snapshot
+            |
+            ---recover_memory_snapshot
+               |          
+                --0.79%--recover_snapshot.part.11
+                          sys_snapshot
+                          entry_SYSCALL_64_fastpath
+                          syscall
+                          __afl_cleanup
+
+     0.73%  afl-fork-target  afl-fork-target          [.] __afl_store
+            |
+            ---__afl_store
+
+     0.71%  afl-fuzz         afl-fuzz                 [.] fuzz_one
+            |          
+             --0.71%--fuzz_one
+                       |          
+                        --0.62%--main
+                                  |          
+                                   --0.56%--__libc_start_main
+                                             |          
+                                              --0.54%--_start
+
+     0.61%  afl-fork-target  [kernel.vmlinux]         [k] handle_mm_fault
+            |
+            ---handle_mm_fault
+               |          
+                --0.59%--__do_page_fault
+                          do_page_fault
+                          page_fault
+
+     0.55%  afl-fork-target  libc-2.21.so             [.] _int_malloc
+     0.53%  afl-fuzz         libc-2.21.so             [.] __random_r
+            |
+            ---__random_r
+               |          
+                --0.51%--__random
+
+     0.51%  afl-fork-target  [kernel.vmlinux]         [k] nmi
+            |
+            ---nmi
+
+     0.47%  afl-fork-target  [kernel.vmlinux]         [k] cpumask_any_but
+     0.41%  afl-fuzz         libc-2.21.so             [.] __random
+     0.39%  afl-fuzz         [kernel.vmlinux]         [k] nmi
+     0.39%  afl-fork-target  [kernel.vmlinux]         [k] _find_next_bit.part.0
+     0.39%  afl-fork-target  [kernel.vmlinux]         [k] page_counter_uncharge
+     0.35%  afl-fork-target  [kernel.vmlinux]         [k] __do_page_fault
+     0.35%  afl-fork-target  [kernel.vmlinux]         [k] walk_page_table
+     0.33%  afl-fuzz         [kernel.vmlinux]         [k] _raw_spin_lock
+     0.31%  afl-fork-target  [kernel.vmlinux]         [k] add_snapshot_page
+     0.31%  afl-fork-target  libc-2.21.so             [.] ptmalloc_init.part.7
+     0.30%  afl-fork-target  afl-fork-target          [.] ASN1_item_d2i
+     0.29%  afl-fork-target  [kernel.vmlinux]         [k] do_memory_snapshot
+     0.28%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.28%  afl-fork-target  [kernel.vmlinux]         [k] kmem_cache_alloc
+     0.24%  afl-fuzz         [kernel.vmlinux]         [k] kmem_cache_alloc
+     0.24%  afl-fork-target  libc-2.21.so             [.] malloc_consolidate
+     0.24%  afl-fork-target  [kernel.vmlinux]         [k] enqueue_task_fair
+     0.23%  afl-fuzz         afl-fuzz                 [.] UR
+     0.23%  perf             [kernel.vmlinux]         [k] pgdat_reclaimable_pages
+     0.22%  afl-fork-target  [kernel.vmlinux]         [k] find_vma
+     0.22%  afl-fork-target  [kernel.vmlinux]         [k] kmem_cache_free
+     0.21%  afl-fork-target  [kernel.vmlinux]         [k] update_cfs_shares
+     0.20%  afl-fork-target  [kernel.vmlinux]         [k] __inode_permission
+     0.20%  afl-fork-target  [kernel.vmlinux]         [k] kfree
+     0.20%  afl-fork-target  [kernel.vmlinux]         [k] clear_page_c_e
+     0.20%  afl-fork-target  [kernel.vmlinux]         [k] make_snapshot_page
+     0.20%  afl-fork-target  [kernel.vmlinux]         [k] kmem_cache_alloc_trace
+     0.20%  afl-fuzz         [kernel.vmlinux]         [k] shmem_write_end
+     0.19%  afl-fuzz         [kernel.vmlinux]         [k] path_openat
+     0.19%  afl-fork-target  libc-2.21.so             [.] _int_free
+     0.19%  afl-fork-target  [kernel.vmlinux]         [k] vmacache_find
+     0.19%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.19%  afl-fuzz         [kernel.vmlinux]         [k] __d_lookup_rcu
+     0.19%  afl-fork-target  [kernel.vmlinux]         [k] __d_lookup_rcu
+     0.18%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.17%  afl-fuzz         [kernel.vmlinux]         [k] update_cfs_shares
+     0.17%  afl-fork-target  afl-fork-target          [.] ASN1_get_object
+     0.17%  afl-fork-target  [kernel.vmlinux]         [k] _raw_spin_lock
+     0.16%  afl-fork-target  [kernel.vmlinux]         [k] __schedule
+     0.16%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.16%  afl-fork-target  [kernel.vmlinux]         [k] munmap_new_vmas
+     0.16%  afl-fork-target  [kernel.vmlinux]         [k] get_page_from_freelist
+     0.16%  afl-fork-target  afl-fork-target          [.] asn1_item_combine_free
+     0.16%  afl-fuzz         libc-2.21.so             [.] __memmove_ssse3_back
+     0.15%  afl-fork-target  [kernel.vmlinux]         [k] uncharge_batch
+     0.15%  afl-fuzz         [kernel.vmlinux]         [k] dequeue_task_fair
+     0.15%  afl-fork-target  libpthread-2.21.so       [.] pthread_mutex_lock
+     0.15%  afl-fuzz         [kernel.vmlinux]         [k] __inode_permission
+     0.15%  afl-fork-target  libc-2.21.so             [.] __libc_calloc
+     0.15%  afl-fork-target  afl-fork-target          [.] ERR_put_error
+     0.15%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.15%  afl-fork-target  [kernel.vmlinux]         [k] find_next_bit
+     0.15%  afl-fork-target  afl-fork-target          [.] asn1_template_noexp_d2i
+     0.14%  afl-fork-target  [kernel.vmlinux]         [k] add_snapshot_vma
+     0.14%  perf             [kernel.vmlinux]         [k] copy_user_enhanced_fast_string
+     0.14%  afl-fuzz         [kernel.vmlinux]         [k] get_page_from_freelist
+     0.14%  afl-fork-target  [kernel.vmlinux]         [k] zap_pte_range
+     0.13%  afl-fork-target  [kernel.vmlinux]         [k] __switch_to
+     0.13%  afl-fork-target  afl-fork-target          [.] asn1_d2i_ex_primitive
+     0.13%  afl-fork-target  [kernel.vmlinux]         [k] recover_files_snapshot
+     0.13%  afl-fork-target  libc-2.21.so             [.] malloc_hook_ini
+     0.13%  afl-fuzz         [kernel.vmlinux]         [k] shmem_getpage_gfp
+     0.13%  afl-fork-target  [kernel.vmlinux]         [k] mem_cgroup_page_lruvec
+     0.13%  afl-fork-target  [kernel.vmlinux]         [k] entry_SYSCALL_64_fastpath
+     0.13%  afl-fuzz         [kernel.vmlinux]         [k] __alloc_pages_nodemask
+     0.12%  afl-fuzz         [kernel.vmlinux]         [k] __schedule
+     0.12%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.12%  afl-fork-target  [kernel.vmlinux]         [k] __fget_light
+     0.12%  afl-fork-target  [kernel.vmlinux]         [k] lookup_fast
+     0.12%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.12%  afl-fuzz         [kernel.vmlinux]         [k] lookup_fast
+     0.12%  afl-fork-target  libpthread-2.21.so       [.] pthread_key_create
+     0.12%  afl-fork-target  afl-fork-target          [.] d2i_AutoPrivateKey
+     0.12%  afl-fuzz         libc-2.21.so             [.] __memcpy_sse2_unaligned
+     0.12%  afl-fuzz         [vdso]                   [.] __vdso_gettimeofday
+     0.11%  afl-fuzz         [kernel.vmlinux]         [k] find_get_entries
+     0.11%  afl-fork-target  [kernel.vmlinux]         [k] update_curr
+     0.11%  afl-fuzz         [kernel.vmlinux]         [k] copy_user_enhanced_fast_string
+     0.11%  afl-fork-target  [kernel.vmlinux]         [k] perf_event_mmap_output
+     0.11%  afl-fuzz         afl-fuzz                 [.] common_fuzz_stuff
+     0.11%  afl-fuzz         libc-2.21.so             [.] _int_malloc
+     0.11%  afl-fork-target  libc-2.21.so             [.] syscall
+     0.11%  afl-fork-target  [kernel.vmlinux]         [k] get_empty_filp
+     0.11%  afl-fork-target  libc-2.21.so             [.] __brk
+     0.11%  afl-fork-target  [kernel.vmlinux]         [k] error_entry
+     0.11%  afl-fork-target  [kernel.vmlinux]         [k] __alloc_pages_nodemask
+     0.11%  afl-fork-target  afl-fork-target          [.] asn1_check_tlen
+     0.11%  afl-fork-target  [kernel.vmlinux]         [k] release_pages
+     0.11%  afl-fork-target  [kernel.vmlinux]         [k] in_group_p
+     0.11%  afl-fork-target  [kernel.vmlinux]         [k] generic_permission
+     0.10%  afl-fuzz         [kernel.vmlinux]         [k] set_next_entity
+     0.10%  afl-fork-target  [kernel.vmlinux]         [k] sys_brk
+     0.10%  afl-fork-target  libc-2.21.so             [.] __linkin_atfork
+     0.10%  afl-fuzz         [kernel.vmlinux]         [k] inode_init_always
+     0.10%  afl-fuzz         [kernel.vmlinux]         [k] do_setitimer
+     0.10%  afl-fork-target  [kernel.vmlinux]         [k] down_read_trylock
+     0.10%  afl-fuzz         [kernel.vmlinux]         [k] __call_rcu.constprop.82
+     0.10%  afl-fork-target  [kernel.vmlinux]         [k] cpuacct_charge
+     0.10%  afl-fork-target  ld-2.21.so               [.] _dl_find_dso_for_object
+     0.10%  afl-fuzz         [kernel.vmlinux]         [k] generic_permission
+     0.10%  afl-fork-target  [kernel.vmlinux]         [k] link_path_walk
+     0.10%  afl-fork-target  [kernel.vmlinux]         [k] try_charge
+     0.10%  afl-fork-target  afl-fork-target          [.] ERR_add_error_data
+     0.10%  afl-fork-target  [kernel.vmlinux]         [k] do_dentry_open
+     0.10%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.10%  afl-fork-target  [kernel.vmlinux]         [k] __pagevec_lru_add_fn
+     0.10%  afl-fork-target  [kernel.vmlinux]         [k] perf_iterate_sb
+     0.10%  afl-fork-target  [kernel.vmlinux]         [k] entry_SYSCALL_64
+     0.10%  afl-fork-target  afl-fork-target          [.] ERR_clear_error
+     0.10%  afl-fork-target  [kernel.vmlinux]         [k] perf_output_begin
+     0.10%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.10%  afl-fuzz         [kernel.vmlinux]         [k] uncharge_batch
+     0.10%  afl-fuzz         [kernel.vmlinux]         [k] entry_SYSCALL_64_fastpath
+     0.10%  afl-fuzz         [kernel.vmlinux]         [k] d_alloc_parallel
+     0.09%  afl-fuzz         [kernel.vmlinux]         [k] _raw_spin_lock_irqsave
+     0.09%  afl-fork-target  libpthread-2.21.so       [.] __write_nocancel
+     0.09%  afl-fuzz         [kernel.vmlinux]         [k] in_group_p
+     0.09%  afl-fork-target  [kernel.vmlinux]         [k] getname_flags
+     0.09%  afl-fork-target  afl-fork-target          [.] d2i_RSAPrivateKey
+     0.09%  afl-fuzz         [kernel.vmlinux]         [k] get_empty_filp
+     0.09%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.09%  afl-fork-target  libc-2.21.so             [.] malloc
+     0.09%  afl-fuzz         afl-fuzz                 [.] cull_queue.part.8
+     0.09%  afl-fork-target  [kernel.vmlinux]         [k] try_to_wake_up
+     0.09%  afl-fork-target  [kernel.vmlinux]         [k] _raw_spin_lock_irqsave
+     0.09%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.09%  afl-fuzz         [kernel.vmlinux]         [k] update_curr
+     0.09%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.09%  afl-fork-target  afl-fork-target          [.] __afl_cleanup
+     0.09%  afl-fork-target  [kernel.vmlinux]         [k] unlink_anon_vmas
+     0.09%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.09%  afl-fork-target  [kernel.vmlinux]         [k] common_file_perm
+     0.09%  afl-fuzz         [kernel.vmlinux]         [k] get_mem_cgroup_from_mm
+     0.09%  afl-fuzz         [kernel.vmlinux]         [k] __switch_to
+     0.09%  afl-fork-target  afl-fork-target          [.] asn1_template_ex_d2i
+     0.08%  afl-fork-target  [kernel.vmlinux]         [k] __fput
+     0.08%  afl-fork-target  afl-fork-target          [.] ASN1_item_ex_d2i
+     0.08%  afl-fork-target  [kernel.vmlinux]         [k] native_write_msr
+     0.08%  afl-fork-target  [kernel.vmlinux]         [k] do_munmap
+     0.08%  afl-fuzz         [kernel.vmlinux]         [k] link_path_walk
+     0.08%  afl-fuzz         [kernel.vmlinux]         [k] switch_mm_irqs_off
+     0.08%  afl-fork-target  [kernel.vmlinux]         [k] perf_event_mmap
+     0.08%  afl-fuzz         libc-2.21.so             [.] __GI___libc_read
+     0.08%  afl-fuzz         [kernel.vmlinux]         [k] dput
+     0.08%  afl-fuzz         [kernel.vmlinux]         [k] bit_waitqueue
+     0.08%  afl-fork-target  [kernel.vmlinux]         [k] switch_mm_irqs_off
+     0.08%  afl-fuzz         afl-fuzz                 [.] choose_block_len
+     0.08%  afl-fork-target  [kernel.vmlinux]         [k] free_hot_cold_page
+     0.08%  afl-fork-target  libc-2.21.so             [.] __memcpy_sse2_unaligned
+     0.08%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.08%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.08%  afl-fork-target  [kernel.vmlinux]         [k] do_brk
+     0.08%  afl-fuzz         libc-2.21.so             [.] _int_free
+     0.08%  afl-fuzz         [kernel.vmlinux]         [k] xattr_resolve_name
+     0.08%  afl-fork-target  [kernel.vmlinux]         [k] __percpu_counter_add
+     0.08%  perf             [kernel.vmlinux]         [k] pgdat_reclaimable
+     0.07%  afl-fork-target  [kernel.vmlinux]         [k] get_mem_cgroup_from_mm
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] entry_SYSCALL_64
+     0.07%  afl-fork-target  libpthread-2.21.so       [.] pthread_mutex_unlock
+     0.07%  afl-fork-target  [kernel.vmlinux]         [k] unmap_page_range
+     0.07%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] shmem_undo_range
+     0.07%  afl-fork-target  afl-fork-target          [.] asn1_item_ex_combine_new
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] mem_cgroup_page_lruvec
+     0.07%  afl-fork-target  afl-fork-target          [.] CRYPTO_get_thread_local
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] path_init
+     0.07%  afl-fork-target  [kernel.vmlinux]         [k] native_queued_spin_lock_slowpath
+     0.07%  afl-fork-target  [kernel.vmlinux]         [k] fsnotify
+     0.07%  afl-fork-target  [kernel.vmlinux]         [k] do_page_fault
+     0.07%  afl-fork-target  afl-fork-target          [.] ASN1_primitive_free
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] generic_file_write_iter
+     0.07%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.07%  afl-fork-target  libc-2.21.so             [.] free
+     0.07%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.07%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] set_root
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] hrtimer_active
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] pipe_read
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] __fput
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] native_write_msr
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] do_sys_open
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] do_dentry_open
+     0.07%  afl-fork-target  [kernel.vmlinux]         [k] __alloc_fd
+     0.07%  afl-fork-target  [kernel.vmlinux]         [k] flush_tlb_mm_range
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] ksize
+     0.07%  afl-fork-target  [kernel.vmlinux]         [k] page_fault
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] __dentry_kill
+     0.07%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.07%  afl-fork-target  [kernel.vmlinux]         [k] perf_output_copy
+     0.07%  afl-fuzz         [kernel.vmlinux]         [k] cpuacct_charge
+     0.07%  afl-fork-target  [kernel.vmlinux]         [k] strncpy_from_user
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] fsnotify
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] percpu_down_read
+     0.06%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.06%  afl-fork-target  [kernel.vmlinux]         [k] __mod_node_page_state
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] memcg_kmem_get_cache
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] posix_acl_create
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] try_charge
+     0.06%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.06%  afl-fork-target  afl-fork-target          [.] asn1_ex_c2i
+     0.06%  afl-fork-target  afl-fork-target          [.] RSA_new
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] kmem_cache_free
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] iput
+     0.06%  afl-fork-target  [kernel.vmlinux]         [k] __call_rcu.constprop.82
+     0.06%  afl-fork-target  [kernel.vmlinux]         [k] free_pgd_range
+     0.06%  afl-fork-target  afl-fork-target          [.] asn1_check_tlen.constprop.1
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] __mod_node_page_state
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] __alloc_fd
+     0.06%  afl-fuzz         afl-fuzz                 [.] update_bitmap_score
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] _raw_spin_lock_irq
+     0.06%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.06%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.06%  afl-fork-target  [kernel.vmlinux]         [k] enqueue_entity
+     0.06%  afl-fork-target  libpthread-2.21.so       [.] __libc_longjmp@plt
+     0.06%  afl-fork-target  afl-fork-target          [.] ASN1_item_ex_new
+     0.06%  afl-fork-target  [kernel.vmlinux]         [k] lru_add_drain_cpu
+     0.06%  afl-fork-target  [kernel.vmlinux]         [k] set_root
+     0.06%  afl-fork-target  [kernel.vmlinux]         [k] shmem_file_read_iter
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] free_hot_cold_page
+     0.06%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.06%  afl-fork-target  [kernel.vmlinux]         [k] __vm_enough_memory
+     0.06%  afl-fork-target  afl-fork-target          [.] c2i_ASN1_INTEGER
+     0.06%  afl-fork-target  [kernel.vmlinux]         [k] find_get_entry
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] cancel_dirty_page
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] vfs_read
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] release_pages
+     0.06%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.06%  afl-fork-target  [kernel.vmlinux]         [k] memcg_kmem_get_cache
+     0.06%  afl-fuzz         [kernel.vmlinux]         [k] __delete_from_page_cache
+     0.06%  afl-fork-target  [kernel.vmlinux]         [k] native_sched_clock
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] shmem_get_inode
+     0.05%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.05%  afl-fork-target  libc-2.21.so             [.] _longjmp_unwind
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] shmem_recalc_inode
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] anon_pipe_buf_release
+     0.05%  afl-fork-target  libpthread-2.21.so       [.] __libc_write
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] vma_rb_erase
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] deactivate_task
+     0.05%  afl-fork-target  afl-fork-target          [.] CBS_get_asn1
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] futex_wake
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] get_futex_key
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] evict
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] do_futex
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] lru_add_drain_cpu
+     0.05%  afl-fork-target  libc-2.21.so             [.] strlen
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] d_flags_for_inode
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] pick_next_task_fair
+     0.05%  afl-fuzz         libc-2.21.so             [.] realloc
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] __perf_event__output_id_sample
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] shmem_add_to_page_cache
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] pipe_write
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] shmem_getpage_gfp
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] dentry_unlink_inode
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] hrtimer_start_range_ns
+     0.05%  afl-fork-target  afl-fork-target          [.] ASN1_primitive_new
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] clear_buddies
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] path_openat
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] security_file_permission
+     0.05%  afl-fuzz         afl-fuzz                 [.] calibrate_case
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] security_file_open
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] __d_lookup
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] radix_tree_next_chunk
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] activate_task
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] vfs_write
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] __vfs_read
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] ksize
+     0.05%  rcu_sched        [kernel.vmlinux]         [k] update_sd_lb_stats
+     0.05%  afl-fork-target  libpthread-2.21.so       [.] __pthread_rwlock_wrlock
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] iov_iter_copy_from_user_atomic
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] rw_verify_area
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] __fget_light
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] ktime_get
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] may_expand_vm
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] apparmor_file_open
+     0.05%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] set_next_entity
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] __vm_enough_memory
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] put_prev_entity
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] update_cfs_rq_load_avg
+     0.05%  afl-fork-target  afl-fork-target          [.] RSA_parse_private_key
+     0.05%  afl-fork-target  afl-fork-target          [.] EVP_PKEY_set_type
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] shmem_write_begin
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] __lru_cache_add
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] pick_next_task_fair
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] pagevec_lru_move_fn
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] shmem_mknod
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] security_vm_enough_memory_mm
+     0.05%  afl-fork-target  libpthread-2.21.so       [.] __pthread_once_slow
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] page_counter_uncharge
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] getname_flags
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] common_file_perm
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] path_init
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] unmap_region
+     0.05%  afl-fuzz         libc-2.21.so             [.] malloc
+     0.05%  afl-fork-target  afl-fork-target          [.] EVP_PKEY_free
+     0.05%  afl-fork-target  libpthread-2.21.so       [.] __pthread_rwlock_unlock
+     0.05%  afl-fork-target  libc-2.21.so             [.] __memset_sse2
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] shmem_alloc_and_acct_page
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] strncpy_from_user
+     0.05%  afl-fuzz         [kernel.vmlinux]         [k] walk_component
+     0.05%  afl-fork-target  [kernel.vmlinux]         [k] mem_cgroup_from_task
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] _copy_to_user
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] __fsnotify_parent
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] native_sched_clock
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] kmem_cache_alloc_trace
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] atime_needs_update
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] security_file_open
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] do_sys_open
+     0.04%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] lockref_put_or_lock
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] exit_to_usermode_loop
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] __vma_link_rb
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] recover_snapshot.part.11
+     0.04%  afl-fuzz         libc-2.21.so             [.] __GI___setitimer
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] mem_cgroup_try_charge
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] d_lookup
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] free_hot_cold_page_list
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] walk_component
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] up_read
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] resched_curr
+     0.04%  afl-fork-target  libpthread-2.21.so       [.] __libc_open
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] mutex_unlock
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] recalc_sigpending
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] get_unused_fd_flags
+     0.04%  afl-fork-target  libc-2.21.so             [.] __sbrk
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] native_flush_tlb
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] memcpy_erms
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] simple_xattr_get
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] unlock_page
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] process_measurement
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] mark_page_accessed
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] mem_cgroup_charge_statistics
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] cp_new_stat
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] vfs_read
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] account_entity_dequeue
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] _cond_resched
+     0.04%  afl-fuzz         afl-fuzz                 [.] gettimeofday@plt
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] do_filp_open
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] account_entity_enqueue
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] __vfs_write
+     0.04%  afl-fork-target  afl-fork-target          [.] EVP_PKEY_new
+     0.04%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] rw_verify_area
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] apparmor_file_open
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] generic_perform_write
+     0.04%  afl-fuzz         afl-fuzz                 [.] write_to_testcase
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] anon_vma_interval_tree_remove
+     0.04%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.04%  afl-fork-target  afl-fork-target          [.] RSA_free
+     0.04%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] __radix_tree_create
+     0.04%  afl-fork-target  afl-fork-target          [.] BN_free
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] __calc_delta
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] free_pages_and_swap_cache
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] mem_cgroup_charge_statistics
+     0.04%  afl-fuzz         libc-2.21.so             [.] _int_realloc
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] __mnt_want_write
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] radix_tree_maybe_preload_order
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] check_preempt_wakeup
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] __lookup_mnt
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] find_get_entry
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] __percpu_counter_add
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] security_inode_need_killpriv
+     0.04%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.04%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] security_path_mknod
+     0.04%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] down_write_killable
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] unlock_page
+     0.04%  afl-fork-target  libc-2.21.so             [.] __libc_siglongjmp
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] copy_page_to_iter
+     0.04%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] unlazy_walk
+     0.04%  afl-fork-target  libc-2.21.so             [.] systrim.isra.1
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] sys_setitimer
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] rb_erase
+     0.04%  afl-fork-target  afl-fork-target          [.] CRYPTO_set_thread_local
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] page_counter_try_charge
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] d_set_d_op
+     0.04%  afl-fuzz         [kernel.vmlinux]         [k] _raw_spin_unlock_irqrestore
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] do_files_snapshot
+     0.04%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] copy_page_to_iter
+     0.04%  afl-fork-target  [kernel.vmlinux]         [k] __fsnotify_parent
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] get_futex_key_refs.isra.14
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] security_inode_init_security
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] __d_rehash
+     0.03%  afl-fork-target  libpthread-2.21.so       [.] pthread_rwlock_init
+     0.03%  afl-fork-target  afl-fork-target          [.] siglongjmp@plt
+     0.03%  afl-fuzz         afl-fuzz                 [.] save_if_interesting
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] update_cfs_rq_load_avg
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] reserve_context
+     0.03%  afl-fork-target  afl-fork-target          [.] c2i_ASN1_OBJECT
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] __sb_start_write
+     0.03%  afl-fork-target  afl-fork-target          [.] int_rsa_free
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] anon_vma_prepare
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] security_d_instantiate
+     0.03%  afl-fork-target  afl-fork-target          [.] OBJ_nid2obj
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] security_mmap_addr
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] __radix_tree_lookup
+     0.03%  afl-fork-target  afl-fork-target          [.] ASN1_item_new
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] __generic_file_write_iter
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] ihold
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] mutex_lock
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] mem_cgroup_commit_charge
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] file_ra_state_init
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] task_work_run
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] security_file_permission
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] mem_cgroup_commit_charge
+     0.03%  afl-fork-target  libpthread-2.21.so       [.] pthread_getspecific
+     0.03%  afl-fork-target  afl-fork-target          [.] __do_main
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] mem_cgroup_handle_over_high
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] dec_zone_page_state
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] dequeue_entity
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] return_from_SYSCALL_64
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] filename_lookup
+     0.03%  afl-fork-target  afl-fork-target          [.] ASN1_OBJECT_free
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] __wake_up_bit
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] unlazy_walk
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] down_write
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] _cond_resched
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] rb_erase
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] native_queued_spin_lock_slowpath
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] vfs_unlink
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] alloc_pages_vma
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] __d_alloc
+     0.03%  afl-fuzz         afl-fuzz                 [.] show_stats
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] page_mapping
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] d_delete
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] up_write
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] mpol_shared_policy_init
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] uncharge_list
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] _atomic_dec_and_lock
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] expand_files
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] __lookup_mnt
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] process_measurement
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] do_filp_open
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] pick_next_entity
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] putname
+     0.03%  afl-fork-target  libpthread-2.21.so       [.] __libc_read
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] vmacache_update
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] current_kernel_time64
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] pte_alloc_one
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] update_min_vruntime
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] perf_output_put_handle
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] timerqueue_add
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] common_perm
+     0.03%  afl-fork-target  libc-2.21.so             [.] __xstat64
+     0.03%  afl-fuzz         libc-2.21.so             [.] __GI___libc_write
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] iov_iter_fault_in_readable
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] pipe_write
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] __legitimize_mnt
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] do_unlinkat
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] __pte_alloc
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] __perf_event_header__init_id
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] iov_iter_advance
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] sys_read
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] get_unmapped_area
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] do_huge_pmd_anonymous_page
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] __vfs_read
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] mutex_unlock
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] percpu_down_read_trylock
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] _copy_from_user
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] uncharge_list
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] alloc_pages_current
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] page_remove_rmap
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] filename_parentat
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] place_entity
+     0.03%  afl-fork-target  libc-2.21.so             [.] __default_morecore
+     0.03%  afl-fuzz         afl-fuzz                 [.] random@plt
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] from_kgid_munged
+     0.03%  afl-fork-target  afl-fork-target          [.] asn1_refcount_set_one
+     0.03%  afl-fuzz         libc-2.21.so             [.] free
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] mutex_lock
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] prepare_exit_to_usermode
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] d_add
+     0.03%  afl-fork-target  afl-fork-target          [.] ASN1_item_ex_free
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] clear_buddies
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] shmem_unlink
+     0.03%  afl-fork-target  afl-fork-target          [.] ASN1_STRING_set
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] get_nohz_timer_target
+     0.03%  afl-fork-target  afl-fork-target          [.] asn1_get_field_ptr
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] common_perm_rm.constprop.14
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] sched_clock_cpu
+     0.03%  afl-fork-target  libc-2.21.so             [.] vfprintf
+     0.03%  afl-fuzz         libc-2.21.so             [.] __GI___unlink
+     0.03%  afl-fork-target  afl-fork-target          [.] old_rsa_priv_decode
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] __calc_delta
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] file_remove_privs
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] set_next_buddy
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] __radix_tree_insert
+     0.03%  afl-fuzz         afl-fuzz                 [.] setitimer@plt
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] perf_pmu_sched_task
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.03%  afl-fork-target  afl-fork-target          [.] METHOD_ref
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] vma_link
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] shmem_alloc_inode
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] apparmor_inode_getattr
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] is_vma_temporary_stack
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] dput
+     0.03%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.03%  afl-fork-target  libpthread-2.21.so       [.] __pthread_once
+     0.03%  afl-fuzz         [kernel.vmlinux]         [k] security_inode_free
+     0.03%  afl-fuzz         libc-2.21.so             [.] __GI___libc_open
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] recalc_sigpending_tsk
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] pmd_page_vaddr
+     0.03%  afl-fork-target  [kernel.vmlinux]         [k] task_tgid_nr_ns
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __next_zones_zonelist
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] file_free_rcu
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] file_update_time
+     0.02%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.02%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] policy_zonelist
+     0.02%  afl-fork-target  afl-fork-target          [.] read@plt
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] task_work_run
+     0.02%  afl-fork-target  afl-fork-target          [.] BN_MONT_CTX_free
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] memcg_check_events
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] mem_cgroup_try_charge
+     0.02%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] open_check_o_direct
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] sys_rt_sigprocmask
+     0.02%  afl-fork-target  afl-fork-target          [.] BN_clear_free
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] _raw_spin_lock_irq
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] shmem_reserve_inode
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] sys_write
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] perf_pmu_sched_task
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __mod_zone_page_state
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] common_perm_create.constprop.13
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] _raw_spin_trylock
+     0.02%  perf             [kernel.vmlinux]         [k] ext4_mark_iloc_dirty
+     0.02%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] pipe_wait
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] truncate_inode_page
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] put_pid
+     0.02%  afl-fork-target  afl-fork-target          [.] pthread_mutex_lock@plt
+     0.02%  afl-fork-target  afl-fork-target          [.] BN_CTX_free
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] task_work_add
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __slab_free
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] security_inode_permission
+     0.02%  perf             [kernel.vmlinux]         [k] _find_next_bit.part.0
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] delete_from_page_cache
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] vma_merge
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] __percpu_counter_compare
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] fput
+     0.02%  afl-fork-target  afl-fork-target          [.] CRYPTO_refcount_dec_and_test_zero
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] sys_snapshot
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] memcg_kmem_charge
+     0.02%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __wake_up_common
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] ___slab_alloc
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] mntput
+     0.02%  afl-fuzz         afl-fuzz                 [.] memcpy@plt
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] prepare_to_wait
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] common_perm
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] get_acl
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] percpu_down_read_trylock
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] security_path_unlink
+     0.02%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.02%  afl-fork-target  afl-fork-target          [.] sk_num
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] arch_get_unmapped_area_topdown
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] do_recover_page
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] return_from_SYSCALL_64
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.02%  perf             perf                     [.] record__mmap_read_evlist.constprop.21
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] copy_page_from_iter
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] lockref_put_or_lock
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] check_preempt_curr
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] pick_next_entity
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] mntput_no_expire
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] queued_spin_unlock_wait
+     0.02%  perf             [kernel.vmlinux]         [k] iov_iter_fault_in_readable
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] shmem_alloc_page
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] rb_insert_color
+     0.02%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] anon_pipe_buf_release
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] simple_lookup
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] shmem_free_inode
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] may_open
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __put_anon_vma
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] restore_c_regs_and_iret
+     0.02%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] sys_write
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] file_update_time
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] sched_clock
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] fsnotify_destroy_marks
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] vfs_fstatat
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] page_add_new_anon_rmap
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] _raw_spin_unlock_irqrestore
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] unmap_vmas
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] get_cached_acl
+     0.02%  afl-fork-target  afl-fork-target          [.] __afl_fork_wait_loop
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] shmem_destroy_inode
+     0.02%  afl-fork-target  afl-fork-target          [.] CRYPTO_new_ex_data
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] security_vm_enough_memory_mm
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __sb_end_write
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] try_module_get
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] kill_fasync
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] generic_fillattr
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] mem_cgroup_update_lru_size
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] memcg_kmem_put_cache
+     0.02%  afl-fork-target  libpthread-2.21.so       [.] pthread_setspecific
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] mnt_want_write
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] touch_atime
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] __d_drop
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] strlcpy
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] drop_nlink
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] sys_futex
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] d_instantiate
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] new_inode_pseudo
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] __get_vma_policy
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] alloc_pages_vma
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] vfs_getattr
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] terminate_walk
+     0.02%  afl-fork-target  afl-fork-target          [.] asn1_refcount_dec_and_test_zero
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] __lru_cache_add
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] vfs_write
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] generic_getxattr
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] get_task_policy.part.34
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] syscall_return_slowpath
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] putname
+     0.02%  afl-fork-target  afl-fork-target          [.] ASN1_template_free
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] __fdget_pos
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] __sb_end_write
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] sync_mm_rss
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] simple_acl_create
+     0.02%  afl-fork-target  afl-fork-target          [.] METHOD_unref
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __sb_start_write
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] update_min_vruntime
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] __close_fd
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] atime_needs_update
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] from_kuid_munged
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __legitimize_mnt
+     0.02%  afl-fork-target  libpthread-2.21.so       [.] __libc_close
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __tlb_remove_page_size.part.64
+     0.02%  afl-fork-target  afl-fork-target          [.] pkey_cb
+     0.02%  afl-fork-target  afl-fork-target          [.] calloc@plt
+     0.02%  afl-fork-target  afl-fork-target          [.] d2i_PKCS8_PRIV_KEY_INFO
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __radix_tree_lookup
+     0.02%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.02%  afl-fork-target  afl-fork-target          [.] CRYPTO_free_ex_data
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] integrity_inode_free
+     0.02%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] read_tsc
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] memcg_kmem_put_cache
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] set_cached_acl
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] rb_next
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] hrtimer_try_to_cancel
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] __cpuset_node_allowed
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] ___pte_free_tlb
+     0.02%  afl-fuzz         afl-fuzz                 [.] DFL_ck_free
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __memcpy
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] copy_page_from_iter
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] __bitmap_weight
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] current_fs_time
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] schedule
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __fdget_pos
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] hash_futex
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] sigprocmask
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] pipe_read
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] native_set_pte_at
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] mnt_drop_write
+     0.02%  afl-fork-target  afl-fork-target          [.] CBS_init
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] vfs_open
+     0.02%  afl-fuzz         libc-2.21.so             [.] __GI___libc_close
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] __wake_up
+     0.02%  perf             [kernel.vmlinux]         [k] memset_erms
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] security_inode_permission
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] sys_read
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __vma_link_file
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] set_next_buddy
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] lockref_get
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] finish_task_switch
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] policy_zonelist
+     0.02%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] inode_has_buffers
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __cpuset_node_allowed
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] path_parentat
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] __init_rwsem
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] filp_close
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] alloc_inode
+     0.02%  afl-fork-target  afl-fork-target          [.] asn1_item_clear
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] up_write
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] inode_permission
+     0.02%  perf             [kernel.vmlinux]         [k] start_this_handle
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] wakeup_preempt_entity.isra.60
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] find_first_bit
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] __next_zones_zonelist
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] kick_process
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __dec_node_page_state
+     0.02%  afl-fork-target  afl-fork-target          [.] sk_new_null
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] arch_vma_name
+     0.02%  afl-fuzz         [kernel.vmlinux]         [k] page_mapped
+     0.02%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] schedule
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] free_pgtables
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] __rb_insert_augmented
+     0.02%  afl-fork-target  libc-2.21.so             [.] @plt
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] memset_erms
+     0.02%  afl-fork-target  [kernel.vmlinux]         [k] terminate_walk
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] restore_regs_and_iret
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] getname
+     0.01%  afl-fork-target  libpthread-2.21.so       [.] __GI___pthread_cleanup_upto
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __close_fd
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] tlb_gather_mmu
+     0.01%  afl-fork-target  afl-fork-target          [.] sk_push
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] mem_cgroup_uncharge_list
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] shmem_evict_inode
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] page_mapping
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] current_kernel_time64
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] lru_add_drain
+     0.01%  afl-fork-target  libpthread-2.21.so       [.] _pthread_cleanup_push
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] restore_nameidata
+     0.01%  afl-fork-target  afl-fork-target          [.] asn1_do_adb
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] rcu_note_context_switch
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] lockref_get_not_dead
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] task_work_add
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] expand_files
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] clear_inode
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] finish_wait
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] retint_user
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] mem_cgroup_update_lru_size
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] lockref_put_return
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] locks_remove_file
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] intel_pstate_update_util
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] find_lock_entry
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] kzfree
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] queued_spin_unlock_wait
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] account_entity_dequeue
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] unmap_single_vma
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] mpol_free_shared_policy
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] dentry_free
+     0.01%  perf             [kernel.vmlinux]         [k] ext4_da_write_end
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.01%  afl-fork-target  afl-fork-target          [.] asn1_enc_init
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __vma_link_list
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] filp_close
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] call_rcu_sched
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] locks_remove_posix
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] memset_erms
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __radix_tree_preload
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __destroy_inode
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] sys_newstat
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] update_rq_clock.part.81
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] security_file_free
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] rcu_note_context_switch
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] sched_clock_cpu
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] rb_insert_color
+     0.01%  afl-fuzz         [vdso]                   [.] 0x0000000000000947
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] ttwu_do_wakeup
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] d_alloc
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __remove_hrtimer
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] vm_normal_page
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __vfs_write
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] finish_task_switch
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] rcu_sched_qs
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] SYSC_newstat
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] get_task_policy.part.34
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] locks_remove_file
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] complete_walk
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] lockref_get_not_dead
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] kfree
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __pagevec_release
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __wake_up_bit
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] lockref_get
+     0.01%  afl-fork-target  afl-fork-target          [.] ASN1_TYPE_set
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] percpu_up_read
+     0.01%  afl-fork-target  afl-fork-target          [.] ASN1_TYPE_new
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] make_snapshot
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] timespec_trunc
+     0.01%  afl-fork-target  afl-fork-target          [.] ASN1_STRING_free
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __set_page_dirty_no_writeback
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] strlen
+     0.01%  afl-fuzz         afl-fuzz                 [.] write@plt
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] get_vma_policy.part.37
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] dnotify_flush
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] path_lookupat
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] rb_next
+     0.01%  afl-fork-target  afl-fork-target          [.] syscall@plt
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] down_write
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] legitimize_mnt
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] default_wake_function
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] may_open
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] ima_file_check
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __d_instantiate
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] update_rq_clock.part.81
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __mem_cgroup_threshold
+     0.01%  afl-fork-target  afl-fork-target          [.] thread_local_init
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] kill_fasync
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __mnt_is_readonly.part.8
+     0.01%  perf             [kernel.vmlinux]         [k] unlock_page
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] file_free_rcu
+     0.01%  afl-fork-target  afl-fork-target          [.] d2i_ASN1_SEQUENCE_ANY
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] find_lock_entry
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __wake_up_sync_key
+     0.01%  afl-fork-target  afl-fork-target          [.] open@plt
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] user_path_at_empty
+     0.01%  afl-fork-target  afl-fork-target          [.] write@plt
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __d_lookup_done
+     0.01%  afl-fork-target  afl-fork-target          [.] CRYPTO_STATIC_MUTEX_unlock
+     0.01%  perf             [kernel.vmlinux]         [k] generic_write_end
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] vm_get_page_prot
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] native_load_tls
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] sys_open
+     0.01%  afl-fuzz         afl-fuzz                 [.] close@plt
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] radix_tree_lookup_slot
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] cap_mmap_addr
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] fput
+     0.01%  afl-fork-target  afl-fork-target          [.] CRYPTO_STATIC_MUTEX_lock_write
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] inode_init_owner
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] shmem_xattr_handler_get
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __wake_up_sync_key
+     0.01%  afl-fuzz         [vdso]                   [.] 0x0000000000000940
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __wake_up_common
+     0.01%  afl-fork-target  libpthread-2.21.so       [.] __read_nocancel
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] hrtimer_active
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] balance_dirty_pages_ratelimited
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] should_remove_suid
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] may_delete
+     0.01%  afl-fork-target  libpthread-2.21.so       [.] longjmp
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] tlb_flush_mmu_tlbonly
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __mod_zone_page_state
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] sys_close
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __inc_zone_state
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] kzfree
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] rcu_sched_qs
+     0.01%  afl-fork-target  afl-fork-target          [.] BUF_strlcpy
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] shmem_getattr
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] mntget
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] locks_free_lock_context
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] inode_permission
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] autoremove_wake_function
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] current_fs_time
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] dnotify_flush
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] security_inode_getattr
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] put_prev_entity
+     0.01%  perf             [kernel.vmlinux]         [k] ext4_da_write_begin
+     0.01%  afl-fork-target  afl-fork-target          [.] OBJ_obj2txt
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] error_exit
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] strlen
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __dec_node_state
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] touch_atime
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] percpu_up_read
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] timespec_trunc
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] always_delete_dentry
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] mem_cgroup_handle_over_high
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] rcu_check_callbacks
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] getname
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] mntput_no_expire
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] complete_walk
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __set_current_blocked
+     0.01%  perf             [kernel.vmlinux]         [k] mark_buffer_dirty
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] cap_capable
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] reusable_anon_vma
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] lru_cache_add_active_or_unevictable
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] nd_jump_root
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] apparmor_file_free_security
+     0.01%  afl-fork-target  afl-fork-target          [.] asn1_enc_free
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] xattr_full_name
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] exit_to_usermode_loop
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] perf_output_end
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] security_file_free
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] mntput
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] vfs_open
+     0.01%  perf             [kernel.vmlinux]         [k] jbd2_journal_stop
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] dentry_needs_remove_privs.part.19
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] PageHuge
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] policy_nodemask
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __mnt_drop_write
+     0.01%  afl-fork-target  libc-2.21.so             [.] __longjmp
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] wakeup_preempt_entity.isra.60
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] tlb_flush_mmu_free
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __inode_wait_for_writeback
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] generic_pipe_buf_confirm
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] legitimize_mnt
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] restore_nameidata
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] current_umask
+     0.01%  perf             [kernel.vmlinux]         [k] generic_perform_write
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] security_inode_alloc
+     0.01%  afl-fuzz         afl-fuzz                 [.] open64@plt
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] lru_cache_add_file
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] clear_page
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] trigger_load_balance
+     0.01%  afl-fork-target  afl-fork-target          [.] sk_pop_free
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __slab_free
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] module_put
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] try_module_get
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] radix_tree_clear_tags
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __get_vma_policy
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __enqueue_entity
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] rcu_check_callbacks
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] mntget
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] kick_process
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] apparmor_file_permission
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __compute_runnable_contrib
+     0.01%  rcu_sched        [kernel.vmlinux]         [k] rcu_implicit_dynticks_qs
+     0.01%  perf             [kernel.vmlinux]         [k] kmem_cache_alloc
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] account_entity_enqueue
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.01%  afl-fuzz         libc-2.21.so             [.] __open_nocancel
+     0.01%  perf             [kernel.vmlinux]         [k] kmem_cache_free
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] apparmor_file_free_security
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] shmem_create
+     0.01%  afl-fork-target  afl-fork-target          [.] sk_free
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] mpol_shared_policy_lookup
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] file_ra_state_init
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] lock_hrtimer_base.isra.21
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] check_cfs_rq_runtime
+     0.01%  perf             [kernel.vmlinux]         [k] get_page_from_freelist
+     0.01%  rcu_sched        [kernel.vmlinux]         [k] _find_next_bit.part.0
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] note_gp_changes
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] sys_unlink
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] 0x0000000000be16d7
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] apparmor_path_mknod
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] native_load_tls
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] pagevec_remove_exceptionals
+     0.01%  afl-fuzz         libc-2.21.so             [.] vfprintf
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] task_tick_fair
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] cap_capable
+     0.01%  perf             [kernel.vmlinux]         [k] __block_write_begin_int
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] sys_open
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] inode_wait_for_writeback
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] security_file_alloc
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] generic_delete_inode
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] lookup_dcache
+     0.01%  perf             [kernel.vmlinux]         [k] __mark_inode_dirty
+     0.01%  perf             [kernel.vmlinux]         [k] __ext4_get_inode_loc
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] sys_close
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] nd_jump_root
+     0.01%  perf             perf                     [.] writen
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __task_pid_nr_ns
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] _copy_from_user
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] syscall_return_via_sysret
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] get_partial_node.isra.69
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] iov_iter_init
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] cap_inode_need_killpriv
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] enqueue_hrtimer
+     0.01%  afl-fuzz         afl-fuzz                 [.] memmove@plt
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] anon_vma_interval_tree_insert
+     0.01%  afl-fork-target  afl-fork-target          [.] memcpy@plt
+     0.01%  perf             [kernel.vmlinux]         [k] __block_commit_write.isra.24
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __mark_inode_dirty
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] get_cached_acl_rcu
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] timerqueue_del
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] radix_tree_lookup_slot
+     0.01%  perf             [kernel.vmlinux]         [k] ext4_es_lookup_extent
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] apparmor_path_unlink
+     0.01%  rcu_sched        [kernel.vmlinux]         [k] dyntick_save_progress_counter
+     0.01%  perf             [kernel.vmlinux]         [k] iov_iter_copy_from_user_atomic
+     0.01%  perf             [kernel.vmlinux]         [k] __ext4_journal_start_sb
+     0.01%  perf             [kernel.vmlinux]         [k] __find_get_block_slow
+     0.01%  perf             [kernel.vmlinux]         [k] radix_tree_tag_set
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] find_next_zero_bit
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] syscall_return_slowpath
+     0.01%  afl-fork-target  afl-fork-target          [.] asn1_collect.constprop.0
+     0.01%  afl-fork-target  libc-2.21.so             [.] __sigprocmask
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_fork_resume
+     0.01%  afl-fuzz         libc-2.21.so             [.] __close_nocancel
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __inc_zone_state
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] get_unused_fd_flags
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] get_cached_acl_rcu
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] inode_sb_list_add
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] ktime_get_update_offsets_now
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] check_cfs_rq_runtime
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] __mark_inode_dirty
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] ____fput
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] remove_vma
+     0.01%  afl-fork-target  afl-fork-target          [.] pthread_getspecific@plt
+     0.01%  perf             [kernel.vmlinux]         [k] account_page_dirtied
+     0.01%  perf             [kernel.vmlinux]         [k] find_next_bit
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] vfs_getattr_nosec
+     0.01%  perf             [kernel.vmlinux]         [k] __ext4_handle_dirty_metadata
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __fd_install
+     0.01%  perf             [kernel.vmlinux]         [k] get_mem_cgroup_from_mm
+     0.01%  afl-fork-target  afl-fork-target          [.] OBJ_obj2nid
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] security_file_alloc
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] set_page_dirty
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] __page_set_anon_rmap
+     0.01%  afl-fork-target  libpthread-2.21.so       [.] __open_nocancel
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] pte_lockptr.isra.17
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] sched_clock
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] hrtimer_interrupt
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] task_tick_fair
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] iov_iter_init
+     0.01%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] syscall_return_via_sysret
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] make_kuid
+     0.01%  afl-fuzz         [kernel.vmlinux]         [k] new_inode
+     0.01%  afl-fork-target  [kernel.vmlinux]         [k] cpuacct_account_field
+     0.00%  python           python2.7                [.] PyEval_EvalFrameEx
+     0.00%  perf             [kernel.vmlinux]         [k] _raw_spin_lock_irqsave
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_da_get_block_prep
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] ttwu_do_activate
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] ___slab_alloc
+     0.00%  afl-fork-target  libc-2.21.so             [.] _IO_default_xsputn
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] shmem_truncate_range
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __tlb_remove_page_size
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_lshift
+     0.00%  afl-fork-target  afl-fork-target          [.] close@plt
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] put_pid
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] module_put
+     0.00%  perf             [kernel.vmlinux]         [k] __wake_up_bit
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] native_iret
+     0.00%  perf             [kernel.vmlinux]         [k] __pagevec_lru_add_fn
+     0.00%  perf             [kernel.vmlinux]         [k] jbd2__journal_start
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  perf             [kernel.vmlinux]         [k] __alloc_pages_nodemask
+     0.00%  perf             [kernel.vmlinux]         [k] __find_get_block
+     0.00%  perf             [kernel.vmlinux]         [k] __radix_tree_create
+     0.00%  perf             [kernel.vmlinux]         [k] __rmqueue
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __fd_install
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] cmpxchg_double_slab.isra.62
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] cap_vm_enough_memory
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] inc_zone_page_state
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] memcg_check_events
+     0.00%  afl-fuzz         afl-fuzz                 [.] read@plt
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] local_clock
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] smp_apic_timer_interrupt
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] policy_nodemask
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] locks_remove_posix
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] get_vma_policy.part.37
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __cmpxchg_double_slab.isra.49
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] ____fput
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] account_system_time
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] calc_global_load_tick
+     0.00%  afl-fork-target  libpthread-2.21.so       [.] pthread_rwlock_destroy
+     0.00%  afl-fuzz         afl-fuzz                 [.] sync_fuzzers
+     0.00%  perf             [kernel.vmlinux]         [k] __radix_tree_lookup
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] _find_next_bit.part.0
+     0.00%  perf             [kernel.vmlinux]         [k] __inc_zone_state
+     0.00%  perf             [kernel.vmlinux]         [k] handle_mm_fault
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_es_insert_extent
+     0.00%  perf             [kernel.vmlinux]         [k] __add_to_page_cache_locked
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] native_set_pmd
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] shmem_destroy_callback
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  afl-fuzz         afl-fuzz                 [.] unlink@plt
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __mutex_init
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] find_next_zero_bit
+     0.00%  afl-fork-target  afl-fork-target          [.] pthread_once@plt
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] filemap_map_pages
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] memcg_kmem_charge_memcg
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] make_kgid
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] ima_file_free
+     0.00%  afl-fork-target  afl-fork-target          [.] free@plt
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_dirty_inode
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] ktime_get_update_offsets_now
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] rcu_irq_enter
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] ktime_get
+     0.00%  afl-fork-target  afl-fork-target          [.] sk_value
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] run_local_timers
+     0.00%  perf             [kernel.vmlinux]         [k] _raw_spin_lock
+     0.00%  perf             [kernel.vmlinux]         [k] _raw_read_lock
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] open_check_o_direct
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] cpumask_next_and
+     0.00%  swapper          [kernel.vmlinux]         [k] update_blocked_averages
+     0.00%  perf             [kernel.vmlinux]         [k] common_file_perm
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_mark_inode_dirty
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_has_free_clusters
+     0.00%  perf             [kernel.vmlinux]         [k] up_read
+     0.00%  python           [kernel.vmlinux]         [k] next_positive.isra.15
+     0.00%  perf             [kernel.vmlinux]         [k] page_counter_try_charge
+     0.00%  perf             [kernel.vmlinux]         [k] node_dirty_ok
+     0.00%  perf             [kernel.vmlinux]         [k] generic_write_checks
+     0.00%  afl-fork-target  afl-fork-target          [.] malloc@plt
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] smp_apic_timer_interrupt
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_rshift1
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] perf_event_task_tick
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] fd_install
+     0.00%  perf             [kernel.vmlinux]         [k] try_charge
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] free_hot_cold_page_list
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] wake_up_bit
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] apparmor_file_alloc_security
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] note_gp_changes
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] security_inode_create
+     0.00%  afl-fuzz         libc-2.21.so             [.] __memcpy_sse2
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] path_put
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] apic_timer_interrupt
+     0.00%  afl-fork-target  libc-2.21.so             [.] _itoa_word
+     0.00%  afl-fork-target  afl-fork-target          [.] ASN1_STRING_type_new
+     0.00%  afl-fork-target  afl-fork-target          [.] BIO_snprintf
+     0.00%  perf             [kernel.vmlinux]         [k] jbd2_journal_dirty_metadata
+     0.00%  afl-fork-target  libc-2.21.so             [.] _int_realloc
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] call_rcu_sched
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __compute_runnable_contrib
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  irqbalance       [kernel.vmlinux]         [k] kstat_irqs_cpu
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] hrtick_update
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_inode_csum_set
+     0.00%  perf             [kernel.vmlinux]         [k] find_get_entry
+     0.00%  perf             [kernel.vmlinux]         [k] entry_SYSCALL_64_fastpath
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_journal_check_start
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] idle_cpu
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __hrtimer_run_queues
+     0.00%  perf             [kernel.vmlinux]         [k] sys_write
+     0.00%  perf             [kernel.vmlinux]         [k] from_kuid
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_get_inode_flags
+     0.00%  python           [kernel.vmlinux]         [k] dcache_readdir
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __mnt_want_write
+     0.00%  afl-fork-target  afl-fork-target          [.] ASN1_item_free
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] cpu_needs_another_gp
+     0.00%  perf             [kernel.vmlinux]         [k] __ext4_journal_stop
+     0.00%  afl-fuzz         libc-2.21.so             [.] __srandom_r
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] tick_sched_timer
+     0.00%  afl-fork-target  libc-2.21.so             [.] realloc_hook_ini
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] get_seconds
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] path_get
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_mod_inverse_ex
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] generic_update_time
+     0.00%  afl-fork-target  libc-2.21.so             [.] __strchrnul
+     0.00%  afl-fork-target  afl-fork-target          [.] pthread_setspecific@plt
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] memcpy_erms
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] cmpxchg_double_slab.isra.62
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] load_balance
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] tlb_finish_mmu
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] apparmor_file_alloc_security
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] find_mergeable_anon_vma
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] fd_install
+     0.00%  afl-fork-target  afl-fork-target          [.] CRYPTO_MUTEX_init
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __fsnotify_inode_delete
+     0.00%  afl-fork-target  libc-2.21.so             [.] realloc
+     0.00%  afl-fork-target  libc-2.21.so             [.] __vsnprintf_chk
+     0.00%  perf             [kernel.vmlinux]         [k] pagecache_get_page
+     0.00%  perf             [kernel.vmlinux]         [k] __percpu_counter_add
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] account_process_tick
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] new_slab
+     0.00%  perf             [kernel.vmlinux]         [k] __fget_light
+     0.00%  afl-fork-target  afl-fork-target          [.] pthread_rwlock_wrlock@plt
+     0.00%  perf             [kernel.vmlinux]         [k] vfs_write
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] run_local_timers
+     0.00%  ksoftirqd/51     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] security_inode_unlink
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] ima_file_free
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __lookup_hash
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  swapper          [kernel.vmlinux]         [k] select_task_rq_fair
+     0.00%  afl-fork-target  afl-fork-target          [.] BUF_MEM_grow_clean
+     0.00%  perf             [kernel.vmlinux]         [k] add_transaction_credits
+     0.00%  perf             [kernel.vmlinux]         [k] down_read
+     0.00%  perf             [kernel.vmlinux]         [k] from_kgid
+     0.00%  perf             [kernel.vmlinux]         [k] ___slab_alloc
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_es_can_be_merged
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __mnt_want_write_file
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  ksoftirqd/7      [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] hrtimer_interrupt
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __memset
+     0.00%  afl-fork-target  afl-fork-target          [.] asn1_enc_save
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_is_zero
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __mutex_init
+     0.00%  afl-fuzz         libc-2.21.so             [.] malloc_consolidate
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] local_apic_timer_interrupt
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] exit_idle
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] intel_pstate_update_util
+     0.00%  afl-fork-target  afl-fork-target          [.] pthread_key_create@plt
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __set_task_blocked
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] apic_timer_interrupt
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] generic_pipe_buf_confirm
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] lru_cache_add_anon
+     0.00%  afl-fuzz         [vdso]                   [.] 0x0000000000000957
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] cpu_load_update_active
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] path_get
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __memset
+     0.00%  perf             [kernel.vmlinux]         [k] wait_for_stable_page
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __slab_alloc
+     0.00%  perf             [kernel.vmlinux]         [k] up_write
+     0.00%  perf             [kernel.vmlinux]         [k] iov_iter_init
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] find_next_bit
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_nonda_switch
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] intel_pmu_disable_all
+     0.00%  swapper          [kernel.vmlinux]         [k] ktime_get_update_offsets_now
+     0.00%  perf             [kernel.vmlinux]         [k] __vfs_write
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] _raw_spin_trylock
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] find_busiest_group
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] native_irq_return_iret
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_file_write_iter
+     0.00%  afl-fuzz         afl-fuzz                 [.] memset@plt
+     0.00%  perf             [kernel.vmlinux]         [k] lock_page_memcg
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_reserve_inode_write
+     0.00%  python           libc-2.21.so             [.] strlen
+     0.00%  perf             [kernel.vmlinux]         [k] nmi
+     0.00%  perf             [kernel.vmlinux]         [k] file_update_time
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] idle_cpu
+     0.00%  perf             [kernel.vmlinux]         [k] policy_zonelist
+     0.00%  perf             [kernel.vmlinux]         [k] node_page_state
+     0.00%  perf             [kernel.vmlinux]         [k] pagevec_lru_move_fn
+     0.00%  perf             [kernel.vmlinux]         [k] down_read_trylock
+     0.00%  perf             [kernel.vmlinux]         [k] task_numa_fault
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] cpu_needs_another_gp
+     0.00%  ksoftirqd/14     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __hrtimer_run_queues
+     0.00%  ksoftirqd/4      [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  perf             perf                     [.] perf_mmap__consume
+     0.00%  ksoftirqd/21     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/21     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  afl-fuzz         libc-2.21.so             [.] __strchrnul
+     0.00%  afl-fuzz         afl-fuzz                 [.] malloc@plt
+     0.00%  ksoftirqd/3      [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  ksoftirqd/12     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  afl-fork-target  afl-fork-target          [.] CRYPTO_MUTEX_cleanup
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __do_softirq
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] cap_vm_enough_memory
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] get_partial_node.isra.69
+     0.00%  afl-fork-target  libc-2.21.so             [.] __memcpy_ssse3_back
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] unlink_file_vma
+     0.00%  ksoftirqd/53     [kernel.vmlinux]         [k] note_gp_changes
+     0.00%  ksoftirqd/51     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] trigger_load_balance
+     0.00%  afl-fork-target  libc-2.21.so             [.] _IO_no_init
+     0.00%  perf             [kernel.vmlinux]         [k] alloc_page_buffers
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] handle_mm_fault
+     0.00%  perf             [kernel.vmlinux]         [k] change_protection
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] timerqueue_del
+     0.00%  afl-fuzz         afl-fuzz                 [.] realloc@plt
+     0.00%  ksoftirqd/27     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fork-target  afl-fork-target          [.] bn_correct_top
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] lockref_mark_dead
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_rshift
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] destroy_inode
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __inode_attach_wb
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] get_next_ino
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] apparmor_file_permission
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] task_tick_numa
+     0.00%  perf             [kernel.vmlinux]         [k] __lru_cache_add
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] cpuacct_account_field
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] run_posix_cpu_timers
+     0.00%  afl-fork-target  afl-fork-target          [.] pthread_rwlock_destroy@plt
+     0.00%  afl-fork-target  libc-2.21.so             [.] _IO_str_init_static_internal
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] irq_enter
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] account_process_tick
+     0.00%  afl-fork-target  afl-fork-target          [.] CBS_get_asn1_uint64
+     0.00%  perf             [kernel.vmlinux]         [k] block_write_end
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] jiffies_to_usecs
+     0.00%  perf             [kernel.vmlinux]         [k] mem_cgroup_try_charge
+     0.00%  perf             [kernel.vmlinux]         [k] __es_insert_extent
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] clear_page_c_e
+     0.00%  perf             [kernel.vmlinux]         [k] __page_cache_alloc
+     0.00%  perf             [kernel.vmlinux]         [k] create_empty_buffers
+     0.00%  perf             [kernel.vmlinux]         [k] iov_iter_advance
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] drop_futex_key_refs.isra.15
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] ima_file_check
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_uadd
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  afl-fuzz         libc-2.21.so             [.] _itoa_word
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] native_apic_msr_eoi_write
+     0.00%  python           [kernel.vmlinux]         [k] update_cfs_shares
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] x86_pmu_disable
+     0.00%  ksoftirqd/33     [kernel.vmlinux]         [k] __slab_free
+     0.00%  python           [kernel.vmlinux]         [k] ext4_mark_iloc_dirty
+     0.00%  perf             [kernel.vmlinux]         [k] add_to_page_cache_lru
+     0.00%  python           python2.7                [.] PyObject_GetAttr
+     0.00%  python           libc-2.21.so             [.] __memmove_ssse3_back
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] raise_softirq
+     0.00%  perf             [kernel.vmlinux]         [k] file_remove_privs
+     0.00%  systemd-journal  [kernel.vmlinux]         [k] __d_lookup
+     0.00%  perf             [kernel.vmlinux]         [k] mem_cgroup_commit_charge
+     0.00%  systemd-journal  libc-2.21.so             [.] _int_malloc
+     0.00%  python           python2.7                [.] 0x00000000001733da
+     0.00%  python           [kernel.vmlinux]         [k] zap_pte_range
+     0.00%  ksoftirqd/32     [kernel.vmlinux]         [k] __d_free
+     0.00%  perf             [kernel.vmlinux]         [k] __mod_zone_page_state
+     0.00%  perf             [kernel.vmlinux]         [k] __next_zones_zonelist
+     0.00%  python           libc-2.21.so             [.] __memmove_sse2
+     0.00%  perf             [kernel.vmlinux]         [k] _cond_resched
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] irq_work_run_list
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] rcu_irq_exit
+     0.00%  python           python2.7                [.] PyString_FromStringAndSize
+     0.00%  ksoftirqd/8      [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  perf             [kernel.vmlinux]         [k] __generic_file_write_iter
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  ksoftirqd/53     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] put_cpu_partial
+     0.00%  ksoftirqd/41     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  perf             [kernel.vmlinux]         [k] mark_page_accessed
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.00%  ksoftirqd/36     [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/0      [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fork-target  [ixgbe]                  [k] ixgbe_read_reg
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __hrtimer_get_next_event
+     0.00%  afl-fork-target  afl-fork-target          [.] i2t_ASN1_OBJECT
+     0.00%  ksoftirqd/7      [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  ksoftirqd/55     [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/2      [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  perf             [kernel.vmlinux]         [k] __getblk_gfp
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_CTX_get
+     0.00%  ksoftirqd/53     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/26     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  ksoftirqd/2      [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  ksoftirqd/23     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  ksoftirqd/17     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/34     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.00%  ksoftirqd/2      [kernel.vmlinux]         [k] cmpxchg_double_slab.isra.62
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] get_target_pstate_use_performance
+     0.00%  ksoftirqd/17     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __hrtimer_get_next_event
+     0.00%  ksoftirqd/100    [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fuzz         libc-2.21.so             [.] _IO_str_init_static_internal
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] sched_avg_update
+     0.00%  ksoftirqd/91     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] native_read_msr
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] page_add_file_rmap
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  afl-fork-target  libpthread-2.21.so       [.] __pthread_rwlock_rdlock
+     0.00%  ksoftirqd/21     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fork-target  afl-fork-target          [.] OPENSSL_cleanse
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] tick_sched_timer
+     0.00%  afl-fuzz         libc-2.21.so             [.] _IO_old_init
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  ksoftirqd/9      [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] tick_program_event
+     0.00%  perf             [kernel.vmlinux]         [k] inode_reserved_space
+     0.00%  ksoftirqd/14     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/48     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  perf             [kernel.vmlinux]         [k] jbd2_write_access_granted.part.8
+     0.00%  ksoftirqd/104    [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] account_system_time
+     0.00%  ksoftirqd/7      [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  perf             [kernel.vmlinux]         [k] __inc_node_page_state
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_num_bits
+     0.00%  afl-fork-target  afl-fork-target          [.] ERR_add_error_dataf
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  afl-fuzz         libc-2.21.so             [.] strrchr
+     0.00%  ksoftirqd/9      [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/13     [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/36     [kernel.vmlinux]         [k] note_gp_changes
+     0.00%  ksoftirqd/19     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/8      [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/23     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_bin2bn
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_bn2dec
+     0.00%  afl-fork-target  afl-fork-target          [.] asn1_set_choice_selector
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] update_sd_lb_stats
+     0.00%  ksoftirqd/25     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_is_bit_set
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] account_user_time
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  ksoftirqd/43     [kernel.vmlinux]         [k] note_gp_changes
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] exit_idle
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_new
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  ksoftirqd/40     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_parse_asn1_unsigned
+     0.00%  perf             [kernel.vmlinux]         [k] __inc_node_state
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_ucmp
+     0.00%  ksoftirqd/15     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  ksoftirqd/18     [kernel.vmlinux]         [k] __slab_free
+     0.00%  perf             [kernel.vmlinux]         [k] _raw_write_lock
+     0.00%  afl-fork-target  afl-fork-target          [.] realloc@plt
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] perf_output_begin
+     0.00%  perf             [kernel.vmlinux]         [k] isolate_lru_page
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] prepend_path
+     0.00%  afl-fork-target  libc-2.21.so             [.] _IO_setb
+     0.00%  ksoftirqd/1      [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/41     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  afl-fuzz         [vdso]                   [.] 0x0000000000000941
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __remove_hrtimer
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] perf_event_task_tick
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __acct_update_integrals
+     0.00%  python           python2.7                [.] PyObject_CallFunctionObjArgs
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] new_slab
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] sched_clock_tick
+     0.00%  afl-fork-target  afl-fork-target          [.] __xstat@plt
+     0.00%  python           [kernel.vmlinux]         [k] walk_component
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __vma_link_file
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] vmacache_find
+     0.00%  perf             [kernel.vmlinux]         [k] fsnotify
+     0.00%  perf             [kernel.vmlinux]         [k] __es_remove_extent
+     0.00%  afl-fork-target  afl-fork-target          [.] bn_wexpand
+     0.00%  perf             [kernel.vmlinux]         [k] new_slab
+     0.00%  afl-fork-target  afl-fork-target          [.] old_ec_priv_decode
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] scheduler_tick
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] chacha20_block
+     0.00%  afl-fork-target  afl-fork-target          [.] BIO_vsnprintf
+     0.00%  perf             [kernel.vmlinux]         [k] _raw_spin_lock_irq
+     0.00%  afl-fork-target  libc-2.21.so             [.] _IO_old_init
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] local_apic_timer_interrupt
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] update_process_times
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] read_tsc
+     0.00%  kworker/u488:2   [kernel.vmlinux]         [k] ext4_mb_new_blocks
+     0.00%  afl-fork-target  afl-fork-target          [.] pthread_rwlock_unlock@plt
+     0.00%  perf             [kernel.vmlinux]         [k] __es_tree_search
+     0.00%  afl-fork-target  afl-fork-target          [.] bn_div_words
+     0.00%  perf             [kernel.vmlinux]         [k] alloc_pages_current
+     0.00%  perf             [kernel.vmlinux]         [k] rcu_irq_enter
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] mem_cgroup_uncharge_list
+     0.00%  afl-fuzz         [vdso]                   [.] 0x0000000000000944
+     0.00%  perf             [kernel.vmlinux]         [k] balance_dirty_pages_ratelimited
+     0.00%  kworker/u488:2   [kernel.vmlinux]         [k] __ext4_handle_dirty_metadata
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.00%  ksoftirqd/9      [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] shmem_file_read_iter
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] irq_enter
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] intel_pmu_disable_all
+     0.00%  ksoftirqd/43     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  python           [kernel.vmlinux]         [k] __fput
+     0.00%  python           [kernel.vmlinux]         [k] _raw_spin_lock
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] lock_timer_base
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] __schedule
+     0.00%  swapper          [kernel.vmlinux]         [k] __enqueue_entity
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] pick_next_task_fair
+     0.00%  python           [kernel.vmlinux]         [k] __page_cache_alloc
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] update_group_capacity
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] rcu_all_qs
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] native_queued_spin_lock_slowpath
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] force_qs_rnp
+     0.00%  swapper          [kernel.vmlinux]         [k] smp_apic_timer_interrupt
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] _raw_spin_lock_irqsave
+     0.00%  swapper          [kernel.vmlinux]         [k] load_balance
+     0.00%  swapper          [kernel.vmlinux]         [k] wake_up_process
+     0.00%  rcu_sched        [kernel.vmlinux]         [k] resched_curr
+     0.00%  swapper          [kernel.vmlinux]         [k] tick_nohz_idle_exit
+     0.00%  swapper          [kernel.vmlinux]         [k] irq_work_tick
+     0.00%  swapper          [kernel.vmlinux]         [k] touch_softlockup_watchdog_sched
+     0.00%  perf             [kernel.vmlinux]         [k] find_vma
+     0.00%  python           python2.7                [.] 0x00000000000ad0c8
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __perf_event_task_sched_out
+     0.00%  swapper          [kernel.vmlinux]         [k] notifier_call_chain
+     0.00%  perf             [kernel.vmlinux]         [k] numamigrate_isolate_page
+     0.00%  perf             [kernel.vmlinux]         [k] recalc_bh_state.part.25
+     0.00%  python           python2.7                [.] 0x00000000000a75de
+     0.00%  perf             [kernel.vmlinux]         [k] native_irq_return_iret
+     0.00%  perf             [kernel.vmlinux]         [k] rb_next
+     0.00%  systemd-journal  [kernel.vmlinux]         [k] evm_inode_setattr
+     0.00%  python           [kernel.vmlinux]         [k] ext4_dirty_inode
+     0.00%  perf             [kernel.vmlinux]         [k] smp_call_function_single
+     0.00%  systemd-journal  systemd-journald         [.] 0x0000000000028791
+     0.00%  python           python2.7                [.] 0x000000000015dabf
+     0.00%  perf             [kernel.vmlinux]         [k] __do_fault
+     0.00%  irqbalance       libglib-2.0.so.0.4400.1  [.] g_list_find_custom
+     0.00%  python           python2.7                [.] PyDict_DelItem
+     0.00%  perf             [kernel.vmlinux]         [k] __ext4_journal_get_write_access
+     0.00%  python           libc-2.21.so             [.] _int_malloc
+     0.00%  systemd-journal  [kernel.vmlinux]         [k] seq_printf
+     0.00%  systemd-journal  [kernel.vmlinux]         [k] may_expand_vm
+     0.00%  systemd-journal  [kernel.vmlinux]         [k] free_hot_cold_page
+     0.00%  perf             [kernel.vmlinux]         [k] __fdget_pos
+     0.00%  systemd-journal  [kernel.vmlinux]         [k] process_measurement
+     0.00%  irqbalance       [kernel.vmlinux]         [k] find_next_bit
+     0.00%  python           python2.7                [.] 0x0000000000172ca0
+     0.00%  systemd-journal  [kernel.vmlinux]         [k] kmem_cache_alloc
+     0.00%  perf             [kernel.vmlinux]         [k] __wake_up
+     0.00%  python           libc-2.21.so             [.] fclose@@GLIBC_2.2.5
+     0.00%  kworker/219:1    [kernel.vmlinux]         [k] _find_next_bit.part.0
+     0.00%  irqbalance       [kernel.vmlinux]         [k] show_interrupts
+     0.00%  systemd-journal  libc-2.21.so             [.] __stpcpy_sse2_unaligned
+     0.00%  perf             [kernel.vmlinux]         [k] note_gp_changes
+     0.00%  python           python2.7                [.] 0x00000000000ac907
+     0.00%  python           python2.7                [.] _PyFile_SanitizeMode
+     0.00%  systemd-journal  [kernel.vmlinux]         [k] kmalloc_slab
+     0.00%  python           [kernel.vmlinux]         [k] __sb_end_write
+     0.00%  irqbalance       [kernel.vmlinux]         [k] lookup_slow
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] restore_regs_and_iret
+     0.00%  perf             [kernel.vmlinux]         [k] release_pages
+     0.00%  irqbalance       [kernel.vmlinux]         [k] __radix_tree_lookup
+     0.00%  in:imuxsock      rsyslogd                 [.] ratelimitAddMsg
+     0.00%  python           [kernel.vmlinux]         [k] path_openat
+     0.00%  python           [kernel.vmlinux]         [k] __kmalloc
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] rcu_irq_exit
+     0.00%  irqbalance       [kernel.vmlinux]         [k] format_decode
+     0.00%  python           python2.7                [.] 0x00000000000c31a0
+     0.00%  python           [kernel.vmlinux]         [k] copy_user_enhanced_fast_string
+     0.00%  perf             [kernel.vmlinux]         [k] page_mapping
+     0.00%  in:imuxsock      libc-2.21.so             [.] _int_malloc
+     0.00%  perf             [kernel.vmlinux]         [k] alloc_buffer_head
+     0.00%  perf             [kernel.vmlinux]         [k] from_kprojid
+     0.00%  perf             [kernel.vmlinux]         [k] page_cpupid_xchg_last
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] irq_work_run_list
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] ret_from_intr
+     0.00%  python           python2.7                [.] 0x00000000000b6aa4
+     0.00%  python           [kernel.vmlinux]         [k] __pagevec_lru_add_fn
+     0.00%  irqbalance       [kernel.vmlinux]         [k] arch_show_interrupts
+     0.00%  in:imuxsock      rsyslogd                 [.] propDestruct
+     0.00%  python           [kernel.vmlinux]         [k] pagecache_get_page
+     0.00%  irqbalance       [kernel.vmlinux]         [k] skip_atoi
+     0.00%  in:imuxsock      [kernel.vmlinux]         [k] __sys_recvmsg
+     0.00%  python           [kernel.vmlinux]         [k] handle_mm_fault
+     0.00%  irqbalance       [kernel.vmlinux]         [k] kstat_irqs
+     0.00%  systemd-journal  libc-2.21.so             [.] __GI___libc_open
+     0.00%  irqbalance       libc-2.21.so             [.] __tz_convert
+     0.00%  python           [kernel.vmlinux]         [k] inode_add_rsv_space
+     0.00%  perf             [kernel.vmlinux]         [k] __radix_tree_preload
+     0.00%  perf             [kernel.vmlinux]         [k] inode_add_rsv_space
+     0.00%  perf             [kernel.vmlinux]         [k] mem_cgroup_charge_statistics
+     0.00%  ksoftirqd/39     [kernel.vmlinux]         [k] __slab_free
+     0.00%  python           [kernel.vmlinux]         [k] __find_get_block
+     0.00%  irqbalance       libc-2.21.so             [.] malloc_consolidate
+     0.00%  perf             [kernel.vmlinux]         [k] get_task_policy.part.34
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] scheduler_tick
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] update_wall_time
+     0.00%  ksoftirqd/18     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  python           [kernel.vmlinux]         [k] insert_inode_locked
+     0.00%  perf             [kernel.vmlinux]         [k] __mem_cgroup_threshold
+     0.00%  ksoftirqd/56     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/57     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] update_blocked_averages
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] native_load_sp0
+     0.00%  ksoftirqd/52     [kernel.vmlinux]         [k] shmem_destroy_callback
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] shmem_destroy_callback
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] run_timer_softirq
+     0.00%  ksoftirqd/49     [kernel.vmlinux]         [k] __slab_free
+     0.00%  python           [kernel.vmlinux]         [k] unmap_underlying_metadata
+     0.00%  ksoftirqd/59     [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/4      [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] hrtimer_forward
+     0.00%  ksoftirqd/50     [kernel.vmlinux]         [k] note_gp_changes
+     0.00%  kworker/u488:2   [kernel.vmlinux]         [k] ext4_get_inode_flags
+     0.00%  perf             [kernel.vmlinux]         [k] current_kernel_time64
+     0.00%  kworker/u488:2   [kernel.vmlinux]         [k] ext4_writepages
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __kmalloc
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __do_softirq
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] profile_tick
+     0.00%  ksoftirqd/55     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __mnt_is_readonly.part.8
+     0.00%  ksoftirqd/17     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.00%  ksoftirqd/31     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  ksoftirqd/3      [kernel.vmlinux]         [k] pick_next_entity
+     0.00%  kworker/u488:2   [kernel.vmlinux]         [k] jbd2_journal_stop
+     0.00%  ksoftirqd/22     [kernel.vmlinux]         [k] __do_softirq
+     0.00%  ksoftirqd/31     [kernel.vmlinux]         [k] nmi
+     0.00%  python           python2.7                [.] 0x0000000000173151
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] do_page_fault
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_usub
+     0.00%  ksoftirqd/2      [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  ksoftirqd/22     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  perf             [kernel.vmlinux]         [k] __memset
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.00%  ksoftirqd/30     [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/14     [kernel.vmlinux]         [k] cmpxchg_double_slab.isra.62
+     0.00%  ksoftirqd/7      [kernel.vmlinux]         [k] note_gp_changes
+     0.00%  ksoftirqd/48     [kernel.vmlinux]         [k] account_entity_dequeue
+     0.00%  ksoftirqd/50     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/23     [kernel.vmlinux]         [k] _raw_spin_lock
+     0.00%  ksoftirqd/36     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/36     [kernel.vmlinux]         [k] cmpxchg_double_slab.isra.62
+     0.00%  ksoftirqd/31     [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/12     [kernel.vmlinux]         [k] _raw_spin_unlock_irqrestore
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] lock_page_memcg
+     0.00%  ksoftirqd/54     [kernel.vmlinux]         [k] note_gp_changes
+     0.00%  ksoftirqd/9      [kernel.vmlinux]         [k] note_gp_changes
+     0.00%  ksoftirqd/21     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  ksoftirqd/27     [kernel.vmlinux]         [k] update_cfs_rq_load_avg
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] hrtick_update
+     0.00%  ksoftirqd/12     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fork-target  afl-fork-target          [.] long_c2i
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] discard_slab
+     0.00%  kworker/u488:2   [kernel.vmlinux]         [k] do_writepages
+     0.00%  ksoftirqd/0      [kernel.vmlinux]         [k] update_curr
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  ksoftirqd/7      [kernel.vmlinux]         [k] native_sched_clock
+     0.00%  ksoftirqd/52     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.00%  ksoftirqd/91     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  ksoftirqd/14     [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/28     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  in:imuxsock      [kernel.vmlinux]         [k] sys_recvmsg
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __pagevec_lru_add_fn
+     0.00%  ksoftirqd/8      [kernel.vmlinux]         [k] cmpxchg_double_slab.isra.62
+     0.00%  perf             perf                     [.] cmd_record
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] do_mmap
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.00%  ksoftirqd/19     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __msecs_to_jiffies
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] change_protection
+     0.00%  ksoftirqd/4      [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/38     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/47     [kernel.vmlinux]         [k] native_queued_spin_lock_slowpath
+     0.00%  python           python2.7                [.] 0x00000000000bfdd0
+     0.00%  ksoftirqd/12     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  ksoftirqd/9      [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  ksoftirqd/15     [kernel.vmlinux]         [k] note_gp_changes
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.00%  ksoftirqd/17     [kernel.vmlinux]         [k] put_cpu_partial
+     0.00%  ksoftirqd/1      [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  python           python2.7                [.] 0x00000000000e792f
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] page_fault
+     0.00%  ksoftirqd/22     [kernel.vmlinux]         [k] put_cpu_partial
+     0.00%  ksoftirqd/39     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  ksoftirqd/1      [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  ksoftirqd/13     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] tick_sched_do_timer
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __mnt_want_write_file
+     0.00%  python           python2.7                [.] 0x00000000000c30d9
+     0.00%  ksoftirqd/1      [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/13     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  ksoftirqd/20     [kernel.vmlinux]         [k] rcu_accelerate_cbs
+     0.00%  kworker/u488:2   [kernel.vmlinux]         [k] ext4_mb_regular_allocator
+     0.00%  ksoftirqd/100    [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] run_timer_softirq
+     0.00%  ksoftirqd/46     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/40     [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/55     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] unfreeze_partials.isra.68
+     0.00%  ksoftirqd/48     [kernel.vmlinux]         [k] __schedule
+     0.00%  ksoftirqd/30     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  ksoftirqd/12     [kernel.vmlinux]         [k] note_gp_changes
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] native_load_sp0
+     0.00%  afl-fork-target  afl-fork-target          [.] strlen@plt
+     0.00%  afl-fork-target  afl-fork-target          [.] bn_add_words
+     0.00%  ksoftirqd/56     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  ksoftirqd/54     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] generic_update_time
+     0.00%  ksoftirqd/2      [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/18     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  perf             [kernel.vmlinux]         [k] sync_mm_rss
+     0.00%  ksoftirqd/39     [kernel.vmlinux]         [k] cmpxchg_double_slab.isra.62
+     0.00%  ksoftirqd/0      [kernel.vmlinux]         [k] raise_softirq
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] error_entry
+     0.00%  afl-fuzz         afl-fuzz                 [.] main
+     0.00%  ksoftirqd/52     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  afl-fuzz         libc-2.21.so             [.] __vsprintf_chk
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] get_align_mask
+     0.00%  ksoftirqd/54     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  ksoftirqd/57     [kernel.vmlinux]         [k] put_cpu_partial
+     0.00%  ksoftirqd/28     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  python           [kernel.vmlinux]         [k] strlcpy
+     0.00%  ksoftirqd/41     [kernel.vmlinux]         [k] note_gp_changes
+     0.00%  afl-fuzz         libpthread-2.21.so       [.] _pthread_cleanup_push_defer
+     0.00%  ksoftirqd/44     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  afl-fork-target  afl-fork-target          [.] CRYPTO_STATIC_MUTEX_lock_read
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] alloc_set_pte
+     0.00%  ksoftirqd/8      [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/40     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  afl-fuzz         libc-2.21.so             [.] _IO_default_xsputn
+     0.00%  afl-fork-target  afl-fork-target          [.] PKCS8_PRIV_KEY_INFO_free
+     0.00%  ksoftirqd/3      [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  ksoftirqd/47     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] load_balance
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __zone_watermark_ok
+     0.00%  python           python2.7                [.] 0x00000000001394c0
+     0.00%  afl-fork-target  afl-fork-target          [.] d2i_ECPrivateKey
+     0.00%  ksoftirqd/27     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/51     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  migration/178    [kernel.vmlinux]         [k] update_sd_lb_stats
+     0.00%  ksoftirqd/17     [kernel.vmlinux]         [k] __d_free
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  ksoftirqd/12     [kernel.vmlinux]         [k] cmpxchg_double_slab.isra.62
+     0.00%  afl-fuzz         libc-2.21.so             [.] _IO_no_init
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] mempolicy_slab_node
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] hrtimer_forward
+     0.00%  python           python2.7                [.] __ctype_b_loc@plt
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __d_free
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] memzero_explicit
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] unlink_anon_vmas
+     0.00%  ksoftirqd/91     [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/28     [kernel.vmlinux]         [k] _raw_spin_trylock
+     0.00%  perf             [kernel.vmlinux]         [k] create_page_buffers
+     0.00%  afl-fork-target  afl-fork-target          [.] CBS_len
+     0.00%  ksoftirqd/7      [kernel.vmlinux]         [k] cmpxchg_double_slab.isra.62
+     0.00%  ksoftirqd/23     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  perf             [kernel.vmlinux]         [k] timespec_trunc
+     0.00%  python           [kernel.vmlinux]         [k] __alloc_pages_nodemask
+     0.00%  afl-fuzz         [vdso]                   [.] 0x000000000000094d
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] rcu_momentary_dyntick_idle
+     0.00%  python           python2.7                [.] PyString_FromFormatV
+     0.00%  afl-fuzz         afl-fuzz                 [.] __sprintf_chk@plt
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] update_group_capacity
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] rcu_all_qs
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] rcu_bh_qs
+     0.00%  ksoftirqd/42     [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/53     [kernel.vmlinux]         [k] shmem_destroy_callback
+     0.00%  ksoftirqd/54     [kernel.vmlinux]         [k] shmem_destroy_callback
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_CTX_start
+     0.00%  kworker/u488:2   [kernel.vmlinux]         [k] mpage_prepare_extent_to_map
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_dup
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] update_blocked_averages
+     0.00%  ksoftirqd/50     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] find_vma
+     0.00%  perf             [kernel.vmlinux]         [k] pte_lockptr.isra.17
+     0.00%  ksoftirqd/23     [kernel.vmlinux]         [k] cpu_needs_another_gp
+     0.00%  ksoftirqd/17     [kernel.vmlinux]         [k] nmi
+     0.00%  python           [kernel.vmlinux]         [k] balance_dirty_pages_ratelimited
+     0.00%  ksoftirqd/45     [kernel.vmlinux]         [k] native_queued_spin_lock_slowpath
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] preempt_schedule_common
+     0.00%  perf             [kernel.vmlinux]         [k] entry_SYSCALL_64
+     0.00%  python           [kernel.vmlinux]         [k] dx_probe
+     0.00%  afl-fork-target  afl-fork-target          [.] c2i_ASN1_BIT_STRING
+     0.00%  ksoftirqd/13     [kernel.vmlinux]         [k] native_queued_spin_lock_slowpath
+     0.00%  afl-fork-target  afl-fork-target          [.] asn1_get_choice_selector
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] get_target_pstate_use_performance
+     0.00%  ksoftirqd/25     [kernel.vmlinux]         [k] dequeue_entity
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] rcu_bh_qs
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] x86_pmu_enable
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_return
+     0.00%  afl-fork-target  libc-2.21.so             [.] __memcmp_sse4_1
+     0.00%  python           [kernel.vmlinux]         [k] task_work_run
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] find_first_bit
+     0.00%  python           [kernel.vmlinux]         [k] ext4_data_block_valid
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_store
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.00%  ksoftirqd/11     [kernel.vmlinux]         [k] file_free_rcu
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.00%  ksoftirqd/42     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  perf             [kernel.vmlinux]         [k] policy_nodemask
+     0.00%  python           python2.7                [.] 0x00000000000c32d0
+     0.00%  perf             [kernel.vmlinux]         [k] __zone_watermark_ok
+     0.00%  perf             [kernel.vmlinux]         [k] memcg_kmem_put_cache
+     0.00%  python           [kernel.vmlinux]         [k] up_write
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] x86_pmu_disable
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __intel_pmu_disable_all
+     0.00%  perf             [kernel.vmlinux]         [k] security_file_permission
+     0.00%  python           [kernel.vmlinux]         [k] lru_add_drain_cpu
+     0.00%  perf             [kernel.vmlinux]         [k] __dquot_alloc_space
+     0.00%  ksoftirqd/27     [kernel.vmlinux]         [k] update_curr
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] irq_work_tick
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] run_posix_cpu_timers
+     0.00%  python           [kernel.vmlinux]         [k] file_ra_state_init
+     0.00%  perf             libpthread-2.21.so       [.] __write_nocancel
+     0.00%  perf             [kernel.vmlinux]         [k] __sb_start_write
+     0.00%  perf             [kernel.vmlinux]         [k] mem_cgroup_update_lru_size
+     0.00%  kworker/u488:2   [kernel.vmlinux]         [k] ext4_mark_iloc_dirty
+     0.00%  ksoftirqd/16     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  python           [kernel.vmlinux]         [k] __ext4_read_dirblock
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_try_setup
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __intel_pmu_disable_all
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_div_word
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_claim_free_clusters
+     0.00%  perf             [kernel.vmlinux]         [k] migrate_misplaced_page
+     0.00%  python           python2.7                [.] 0x000000000015d965
+     0.00%  ksoftirqd/54     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  ksoftirqd/43     [kernel.vmlinux]         [k] __slab_free
+     0.00%  python           python2.7                [.] PyList_New
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] clockevents_program_event
+     0.00%  ksoftirqd/39     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  afl-fork-target  afl-fork-target          [.] BN_add_word
+     0.00%  python           [kernel.vmlinux]         [k] cpu_needs_another_gp
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] enqueue_task_rt
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] tick_nohz_tick_stopped
+     0.00%  python           [kernel.vmlinux]         [k] unlock_page_memcg
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __acct_update_integrals
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] rebalance_domains
+     0.00%  python           [kernel.vmlinux]         [k] get_mem_cgroup_from_mm
+     0.00%  systemd-journal  [kernel.vmlinux]         [k] __vma_link_file
+     0.00%  perf             [kernel.vmlinux]         [k] __inc_zone_page_state
+     0.00%  ksoftirqd/20     [kernel.vmlinux]         [k] rcu_process_callbacks
+     0.00%  python           python2.7                [.] 0x00000000000b71c8
+     0.00%  afl-fork-target  afl-fork-target          [.] DSA_new
+     0.00%  python           python2.7                [.] 0x000000000015db38
+     0.00%  python           [kernel.vmlinux]         [k] __ext4_new_inode
+     0.00%  python           [kernel.vmlinux]         [k] find_get_entry
+     0.00%  python           [kernel.vmlinux]         [k] ext4_search_dir
+     0.00%  perf             [kernel.vmlinux]         [k] memcg_check_events
+     0.00%  ksoftirqd/28     [kernel.vmlinux]         [k] note_gp_changes
+     0.00%  ksoftirqd/25     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __do_fault
+     0.00%  perf             [kernel.vmlinux]         [k] percpu_up_read
+     0.00%  ksoftirqd/36     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] _extract_crng
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] profile_tick
+     0.00%  perf             [kernel.vmlinux]         [k] __set_page_dirty
+     0.00%  python           libc-2.21.so             [.] realloc
+     0.00%  python           python2.7                [.] 0x00000000000b71be
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __do_page_fault
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] put_cpu_partial
+     0.00%  perf             [kernel.vmlinux]         [k] trigger_load_balance
+     0.00%  ksoftirqd/22     [kernel.vmlinux]         [k] __slab_free
+     0.00%  ksoftirqd/48     [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] ntp_tick_length
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __slab_alloc
+     0.00%  python           [kernel.vmlinux]         [k] apparmor_inode_getattr
+     0.00%  perf             [kernel.vmlinux]         [k] page_cache_tree_insert
+     0.00%  perf             [kernel.vmlinux]         [k] radix_tree_lookup_slot
+     0.00%  ksoftirqd/41     [kernel.vmlinux]         [k] __slab_free
+     0.00%  python           python2.7                [.] 0x00000000000c2ec0
+     0.00%  afl-fuzz         afl-fuzz                 [.] free@plt
+     0.00%  python           python2.7                [.] Py_BuildValue
+     0.00%  python           [kernel.vmlinux]         [k] kmem_cache_alloc
+     0.00%  perf             [kernel.vmlinux]         [k] down_write
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] cpu_load_update
+     0.00%  perf             [kernel.vmlinux]         [k] ext4_get_group_desc
+     0.00%  perf             [kernel.vmlinux]         [k] unmap_underlying_metadata
+     0.00%  afl-fork-target  afl-fork-target          [.] __afl_maybe_log
+     0.00%  python           libc-2.21.so             [.] _IO_file_doallocate
+     0.00%  python           python2.7                [.] PyTuple_New
+     0.00%  python           python2.7                [.] 0x00000000000e9089
+     0.00%  python           python2.7                [.] 0x0000000000139f30
+     0.00%  perf             [kernel.vmlinux]         [k] __do_page_fault
+     0.00%  python           python2.7                [.] 0x0000000000139a3f
+     0.00%  python           python2.7                [.] 0x00000000000bd20a
+     0.00%  kworker/u488:2   [kernel.vmlinux]         [k] ext4_ext_try_to_merge
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] tick_program_event
+     0.00%  kworker/u488:2   [kernel.vmlinux]         [k] __percpu_counter_add
+     0.00%  systemd-journal  [kernel.vmlinux]         [k] up_write
+     0.00%  rs:main Q:Reg    [kernel.vmlinux]         [k] load_balance
+     0.00%  rs:main Q:Reg    [kernel.vmlinux]         [k] update_sd_lb_stats
+     0.00%  gmain            [kernel.vmlinux]         [k] update_sd_lb_stats
+     0.00%  systemd-journal  [kernel.vmlinux]         [k] get_pid_task
+     0.00%  ksoftirqd/16     [kernel.vmlinux]         [k] shmem_destroy_callback
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __intel_pmu_enable_all
+     0.00%  irqbalance       libc-2.21.so             [.] vfprintf
+     0.00%  systemd-journal  [kernel.vmlinux]         [k] enqueue_entity
+     0.00%  ksoftirqd/20     [kernel.vmlinux]         [k] put_cpu_partial
+     0.00%  afl-fuzz         afl-fuzz                 [.] DI
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] update_process_times
+     0.00%  ksoftirqd/43     [kernel.vmlinux]         [k] kmem_cache_free
+     0.00%  ksoftirqd/4      [kernel.vmlinux]         [k] __slab_free
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __perf_event_task_sched_out
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __perf_event_task_sched_in
+     0.00%  kworker/u488:2   [kernel.vmlinux]         [k] inode_reserved_space
+     0.00%  afl-fork-target  afl-fork-target          [.] PKCS8_pkey_get0
+     0.00%  swapper          [kernel.vmlinux]         [k] cmpxchg_double_slab.isra.62
+     0.00%  swapper          [kernel.vmlinux]         [k] ktime_get
+     0.00%  watchdog/125     [kernel.vmlinux]         [k] update_blocked_averages
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __perf_event_task_sched_in
+     0.00%  irqbalance       [kernel.vmlinux]         [k] update_sd_lb_stats
+     0.00%  swapper          [kernel.vmlinux]         [k] irq_exit
+     0.00%  swapper          [kernel.vmlinux]         [k] flush_smp_call_function_queue
+     0.00%  swapper          [kernel.vmlinux]         [k] x86_pmu_enable
+     0.00%  swapper          [kernel.vmlinux]         [k] native_irq_return_iret
+     0.00%  swapper          [kernel.vmlinux]         [k] native_write_msr
+     0.00%  swapper          [kernel.vmlinux]         [k] generic_smp_call_function_single_interrupt
+     0.00%  swapper          [kernel.vmlinux]         [k] __perf_event_enable
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] flush_smp_call_function_queue
+     0.00%  swapper          [kernel.vmlinux]         [k] event_function
+     0.00%  swapper          [kernel.vmlinux]         [k] idle_cpu
+     0.00%  swapper          [kernel.vmlinux]         [k] irq_work_run_list
+     0.00%  swapper          [kernel.vmlinux]         [k] remote_function
+     0.00%  swapper          [kernel.vmlinux]         [k] __intel_pmu_enable_all
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] native_write_cr2
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] flush_smp_call_function_queue
+     0.00%  swapper          [kernel.vmlinux]         [k] read_tsc
+     0.00%  swapper          [kernel.vmlinux]         [k] tick_nohz_irq_exit
+     0.00%  swapper          [kernel.vmlinux]         [k] ctx_resched
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] native_write_cr2
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] nmi_restore
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] intel_bts_enable_local
+     0.00%  swapper          [kernel.vmlinux]         [k] perf_ctx_unlock
+     0.00%  swapper          [kernel.vmlinux]         [k] irq_work_run
+     0.00%  swapper          [kernel.vmlinux]         [k] native_sched_clock
+     0.00%  swapper          [kernel.vmlinux]         [k] rcu_nmi_exit
+     0.00%  swapper          [kernel.vmlinux]         [k] rcu_needs_cpu
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] intel_pmu_handle_irq
+     0.00%  swapper          [kernel.vmlinux]         [k] perf_pmu_enable.part.94
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] intel_bts_enable_local
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] event_function
+     0.00%  swapper          [kernel.vmlinux]         [k] _find_next_bit.part.0
+     0.00%  swapper          [kernel.vmlinux]         [k] printk_nmi_exit
+     0.00%  swapper          [kernel.vmlinux]         [k] intel_pmu_enable_all
+     0.00%  swapper          [kernel.vmlinux]         [k] nmi_handle
+     0.00%  swapper          [kernel.vmlinux]         [k] intel_pmu_handle_irq
+     0.00%  swapper          [kernel.vmlinux]         [k] intel_bts_enable_local
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] intel_pmu_enable_all
+     0.00%  swapper          [kernel.vmlinux]         [k] do_nmi
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] call_function_single_interrupt
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] do_nmi
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] __intel_pmu_enable_all
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] rcu_nmi_exit
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] rcu_nmi_exit
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] perf_event_nmi_handler
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] default_do_nmi
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] irq_exit
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] irq_work_run
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] nmi_handle
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] event_function
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] idle_cpu
+     0.00%  afl-fuzz         [kernel.vmlinux]         [k] perf_pmu_enable.part.94
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] ctx_resched
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] irq_work_run
+     0.00%  afl-fork-target  [kernel.vmlinux]         [k] __perf_event_enable
+     0.00%  perf             [kernel.vmlinux]         [k] native_write_msr
+
+
+#
+# (Tip: Save output of perf stat using: perf stat record <target workload>)
+#
