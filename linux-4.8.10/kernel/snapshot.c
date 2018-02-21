@@ -4,12 +4,6 @@
  *  wxu
  */
 
-/*
- * TODO (sanidhya):
- * 1) Can we remove the allocation / deallocation?
- * 2) Reusing stack pages?
- */
-
 #include <linux/slab.h>
 #include <linux/init.h>
 #include <linux/unistd.h>
@@ -263,17 +257,12 @@ void do_recover_page(struct snapshot_page *sp) {
 	copy_to_user((void __user *)sp->page_base, 
 								sp->page_data, PAGE_SIZE); 	
 	
-	// kfree(sp->page_data);
 }
 
 void do_recover_none_pte(struct snapshot_page *sp) {
 	struct mm_struct *mm = current->mm;
 	struct mmu_gather tlb;	
 	pmd_t *pmd;
-	/*
-	pte_t *pte;
-	struct page *page;
-	*/
 
 	dbg_printk("[WEN] found none_pte refreshed page_base: 0x%08lx page_prot: 0x%08lx\n",
 				sp->page_base, sp->page_prot);
@@ -320,12 +309,11 @@ void clean_memory_snapshot(struct mm_struct *mm) {
 
 void recover_memory_snapshot(struct mm_struct *mm) {
 	struct snapshot_page *sp, *prev_sp = NULL;
-    pte_t *pte, entry;
+    	pte_t *pte, entry;
 	int i;
 
 	hash_for_each(mm->ss.ss_page, i, sp, next) {
-		// if (prev_sp)
-	    //	  kfree(prev_sp);
+
         if (sp->valid) {
 		    if (sp->has_been_copied) // it has been captured by page fault
 			    do_recover_page(sp);	
@@ -343,7 +331,6 @@ void recover_memory_snapshot(struct mm_struct *mm) {
             sp->valid = false;
         }
 
-		// prev_sp = sp;
 	}		
 }
 
@@ -372,9 +359,9 @@ struct snapshot_page *add_snapshot_page(struct mm_struct *mm, unsigned long page
     sp = get_snapshot_page(mm, page_base);
     if (sp == NULL) {
 	    sp = kmalloc(sizeof(struct snapshot_page), GFP_KERNEL);
-        // printk("new sp: 0x%08lx, page base: 0x%08lx\n", (unsigned long)sp, page_base);
-        sp->page_base = page_base;
-        sp->page_data = NULL;
+        
+            sp->page_base = page_base;
+            sp->page_data = NULL;
 	    hash_add(mm->ss.ss_page, &sp->next, sp->page_base);
     }
 
@@ -568,8 +555,6 @@ void reserve_context(unsigned long arg) {
 
 	sctx->cleanup = buf[0];
 
-//	dbg_printk("reserve ip: 0x%08lx\n", 
-//	 				sctx->cleanup);
 }
 
 inline void reserve_brk(void) {
