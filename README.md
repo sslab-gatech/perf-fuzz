@@ -20,7 +20,8 @@ New OS Primitives Specialized for Fuzzing
 ```sh
 cd jpeg-9b
 CC=../../afl/afl-gcc ./configure
-./djpeg -h
+make
+./djpeg -h (This step cannot be skipped in order to get lt-djpeg)
 ```
 * Launch afl (here 2 instances) 
 ```sh
@@ -31,6 +32,7 @@ In another terminal,
 ```
 ../afl/afl-fuzz -i input -o output -S slave1 -u 1/2 jpeg-9b/.libs/lt-djpeg
 ```
+Note that both of the AFL instances will start fuzzing only when both of them have been launched.
 
 ## Contributors
 * Wen Xu (wen.xu@gatech.edu)
